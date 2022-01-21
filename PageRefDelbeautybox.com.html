@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://delbeautybox.com/ourservices.html -->
+<html xmlns="//www.w3.org/1999/xhtml" lang="en" class="fa-events-icons-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="icon" type="image/png" href="https://delbeautybox.com/favicon.ico">
+
+		<!-- Meta Tags -->
+		<script type="text/javascript" src="./PageRefDelbeautybox.com_files/c4a623115d"></script><script src="./PageRefDelbeautybox.com_files/nr-1177.min.js.descarga"></script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgUPUV9WDBADU1lbBAkEXlI=",licenseKey:"c4a623115d",applicationID:"378938386"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(22),c={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,i.indexOf("dev")!==-1&&(c.dev=!0),i.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&o.on("internal-error",function(t){r(t.stack)}),c.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,c){try{p?p-=1:i(c||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,s.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:s.now();o("err",[t,n])}var o=t("handle"),a=t(23),c=t("ee"),s=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),s.xhrWrappable&&t(10),d=!0)}c.on("fn-start",function(t,e,n){d&&(p+=1)}),c.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),c.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),c.on("internal-error",function(t){o("ierr",[t,s.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),c=t(8),s="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),c.on(m,function(){this.bstStart=y.now()}),c.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+s]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+s]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+s]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){c.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),c=t("wrap-function")(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var c=r.apply(this,t);return i.emit(n+"start",[t,a],c),c.then(function(t){return i.emit(n+"end",[null,t],c),t},function(t){throw i.emit(n+"end",[t],c),t})})}var i=t("ee").get("fetch"),o=t(23),a=t(22);e.exports=i;var c=window,s="fetch-",f=s+"body-",u=["arrayBuffer","blob","json","text","formData"],d=c.Request,l=c.Response,p=c.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(c,"fetch",s),i.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(s+"done",[null,e],n)}else i.emit(s+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(s+u,r),o.on(c+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",c)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!c(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||s(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&s(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",c=1,s="",f="";return i+"@nr="+o+"-"+c+"-"+n+"-"+r+"-"+t+"-"+a+"-"+s+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var c={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(c.d.tk=o),btoa(JSON.stringify(c))}function c(t){return f()&&s(t)}function s(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(19),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:c}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime]))}}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=s(e),t.sameOrigin=t.parsedOrigin.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(17),m=t(16),w=t(14),v=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var c=0;c<l;c++)e.addEventListener(d[c],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof v&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof v&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof v&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=s(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,c=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||c),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(16);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(22),c=t(23),s=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(s.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw s.emit("fn-err",[arguments,this,t],n),t}finally{s.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],17:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],18:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function c(t){d("pageHide",[l.now(),t])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var s,f,u,d=t("handle"),l=t("loader"),p=t(21),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(c)}},{}],19:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",c=0;c<o.length;c++)i=o[c],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],20:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,s=c.match(a);s&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=s[1])}e.exports={agent:i,version:o,match:r}},{}],21:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],22:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],23:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],24:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?s(t,c,o):o()}function n(n,r,i,o){if(!l.aborted||o){t&&t(n,r,i);for(var a=e(i),c=m(n),s=c.length,f=0;f<s;f++)c[f].apply(a,r);var d=u[y[n]];return d&&d.push([x,n,r,a]),a}}function p(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||i(n)}function v(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:a,aborted:!1};return x}function o(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var c="nr@context",s=t("gos"),f=t(22),u={},d={},l=e.exports=i();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=b.info=NREUM.info,e=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+b.offset],null,"api"),s("timing",["load",n]);var r=p.createElement("script");r.src="https://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===p.readyState&&o()}function o(){s("mark",["domContent",a()+b.offset],null,"api")}function a(){return R.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-b.offset}var c=(new Date).getTime(),s=t("handle"),f=t(22),u=t("ee"),d=t(20),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1177.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=e.exports={offset:c,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(15),t(18),p[h]?(p[h]("DOMContentLoaded",o,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",i),l[m]("onload",r)),s("mark",["firstbyte",c],null,"api");var E=0,R=t(24)},{}],"wrap-function":[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var i=t("ee"),o=t(23),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,i){function nrWrapper(){var r,a,c,s;try{a=this,r=o(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,i],c])}u(e+"start",[r,a,i],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,i,o){i||(i="");var a,c,s,f="-"===i.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+i:i,o,c))}function u(n,r,i){if(!s||e){var o=s;s=!0;try{t.emit(n,r,i,e)}catch(a){l([a,n,r,i])}s=o}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var i in t)c.call(t,i)&&(e[i]=t[i]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=i),n.inPlace=f,n.flag=a,n}},{}]},{},["loader",2,12,4,3]);</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>Del Mar Blow Dry Bar | Keratin Hair Extensions Del Mar</title>
+
+		<meta name="description" content="At Del Beauty Box, we provide blow dry bar &amp; Brazilian Keratin treatment at affordable price. Visit our website to get more details about our services.">
+
+		<meta name="keyword" content="Brazilian keratin treatment in Del Mar, Keratin Hair extensions, Dry Bar Del Mar, Blow dry bar Del Mar, Del Mar blow dry bar">
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:title" content="Del Mar Blow Dry Bar | Keratin Hair Extensions Del Mar">
+		<meta property="og:description" content="At Del Beauty Box, we provide blow dry bar &amp; Brazilian Keratin treatment at affordable price. Visit our website to get more details about our services.">
+		<meta property="og:image" content="">
+		<meta property="og:type" content="website">
+
+		<style type="text/css">.backend-alert{margin-bottom:0px !important;padding: 10px !important;border-radius: 0px !important;}</style>
+
+		<script>
+			var dir = url = "https://www.delbeautybox.com/";
+			var ajax_url = "https://www.delbeautybox.com/";
+			var ThemeURL = 'https://www.delbeautybox.com/themes/default/';
+			var isCoupon = '';
+		</script>
+
+
+
+		<!-- Loader -->
+						<!-- End Loader -->
+
+		<script src="./PageRefDelbeautybox.com_files/jquery-1.11.0.min.js.descarga" async=""></script>
+		<script src="./PageRefDelbeautybox.com_files/mustache.min.js.descarga" async=""></script>
+		<script src="./PageRefDelbeautybox.com_files/handlebars-v4.0.5.js.descarga" async=""></script>
+		<script src="./PageRefDelbeautybox.com_files/jquery_cookie.js.descarga" async=""></script>
+		<script src="./PageRefDelbeautybox.com_files/main.js.descarga" async=""></script>
+
+
+		<!-- Loader -->
+						<!-- End Loader -->
+
+		<!-- Web Fonts -->
+<link href="./PageRefDelbeautybox.com_files/css" rel="stylesheet" type="text/css">
+<!-- New Css -->
+<link rel="stylesheet" type="text/css" href="./PageRefDelbeautybox.com_files/bootstrap.css">
+
+<link rel="stylesheet" type="text/css" href="./PageRefDelbeautybox.com_files/video-js.css">
+<link rel="stylesheet" type="text/css" href="./PageRefDelbeautybox.com_files/slick.css">
+<link rel="stylesheet" type="text/css" href="./PageRefDelbeautybox.com_files/swipebox.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="https://delbeautybox.com/themes/default/style.css" /> -->
+<!-- Icons -->
+<link rel="stylesheet" href="./PageRefDelbeautybox.com_files/style.css">
+<!--[if lt IE 8]><!-->
+<link rel="stylesheet" href="./PageRefDelbeautybox.com_files/ie7.css">
+
+<link href="./PageRefDelbeautybox.com_files/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="./PageRefDelbeautybox.com_files/Slidestyle.css" rel="stylesheet" type="text/css" media="all">
+<link href="./PageRefDelbeautybox.com_files/timepicki.css" rel="stylesheet" type="text/css">
+<link href="./PageRefDelbeautybox.com_files/style(1).css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="./PageRefDelbeautybox.com_files/custom.css">
+<link rel="stylesheet" href="./PageRefDelbeautybox.com_files/magnific-popup.css">
+<link href="./PageRefDelbeautybox.com_files/default.css" rel="stylesheet" type="text/css" media="all">
+<link href="./PageRefDelbeautybox.com_files/faq-accordion.css" rel="stylesheet" type="text/css" media="all">
+
+
+
+
+
+	<link href="./PageRefDelbeautybox.com_files/f5f5fd17b2.css" media="all" rel="stylesheet"></head>
+			<body class="pages" id="track-20">
+
+	<header>
+
+<div class="top-line sticky" id="myHeader">
+		<div class="container">
+				<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-6">
+								<p> <span><i class="fa fa-phone"></i><a href="tel: 8582594247">(858)259-4247</a></span>  <span><i class="fa fa-map-marker"></i><a href="https://www.google.com/maps/place/Del+Beauty+Box/@32.9535961,-117.2634041,21z/data=!4m13!1m7!3m6!1s0x80dc08b247197de3:0x808b77becc75da48!2s910+Camino+Del+Mar,+Del+Mar,+CA+92014,+USA!3b1!8m2!3d32.95353!4d-117.2633344!3m4!1s0x0:0x15d75b813223492d!8m2!3d32.953581!4d-117.2633277" target="_blank">910 Camino Del Mar, Del Mar CA 92014.</a></span> </p>
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-2">&nbsp;</div>
+						<div class="col-md-4 col-sm-4 col-xs-4">
+						<p style="margin-left:9%"> <span><i class="fa fa-clock-o"></i>Monday to Saturday 10am-6pm. </span></p>
+						</div>
+					</div>
+				</div>
+	</div>
+
+<div class="row-fluid">
+      <div class="span12 siteLogo">
+        <a href="https://delbeautybox.com/index.html"><img src="./PageRefDelbeautybox.com_files/logo.png"></a>
+      </div>
+    </div>
+<div class="mother-grid sbMenu">
+  <div class="container">
+				<div class="row">
+    <div class="header">
+
+      <div class="header-right">
+   <!--   <div class="icon-phone2 DelphoneNumber"></div> <span class="DelphoneNumber">(858) 259-4247</span> -->
+      </div>
+      <span class="menu"> <img src="./PageRefDelbeautybox.com_files/icon-1.png"></span>
+      <div class="clear"> </div>
+      <div class="header-left">
+          <ul class="res">
+                 <li><a href="https://delbeautybox.com/index.html">Home</a></li>
+               <li><a href="https://delbeautybox.com/ourservices.html">SERVICES</a></li>
+               <li><a href="https://delbeautybox.com/pricing-table.html">Pricing</a></li>
+               <li><a href="https://delbeautybox.com/our-stylists.html">Independent Stylists</a></li>
+               <li><a href="https://delbeautybox.com/all.html">GALLERY</a></li>
+               <li><a href="https://delbeautybox.com/gift-certificates.html">Gift Card &amp; Membership </a></li>
+               <li><a href="https://delbeautybox.com/blog.html">Social</a></li>
+               <li><a href="https://delbeautybox.com/contact.html">CONTACT<br></a></li>
+			    <li><a href="https://shop.saloninteractive.com/store/DelBeautyBox">Store</a></li>
+				<li><a href="https://delbeautybox.com/policies.html">Policies <br></a></li>
+				    <li><a href="https://delbeautybox.com/jobs.html">Job &amp; Renters</a></li>
+					</ul>
+
+      </div>
+  <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+</div>
+</header>
+<script>
+  $(window).resize(function(e) {
+    if($(window).width() > 768){$(  "ul.res" ).fadeIn("slow");}
+    else{$(  "ul.res" ).fadeOut("slow");}
+  });
+    $( "span.menu").click(function() {
+      $(  "ul.res" ).slideToggle("slow");
+  });
+  $(document).ready(function() {
+    $('.Search input[type=submit]').click(function(){
+      if($("#searchtxt").width()>1)
+      $("#searchtxt").animate({"width":"0px"},500,function(){$(this).hide();});
+      else
+      {
+      $("#searchtxt").show().animate({"width":"150px"},500);
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+function list_apo_options(items){
+
+		var html = '';
+	  console.log(items);
+	  $.each(items,function(index1,nextlist){
+
+	  	$.each(nextlist,function(index2,list){
+
+	  		if($.isPlainObject(list)){
+
+		  		if(list['type'] == "radio"){
+		  			html +=apo_radiobutton(list,'<div class="form-group">','</div>');
+		  		}
+		  		if(list['type'] == "area"){
+		  			html +=apo_textarea(list,'<div class="form-group">','</div>');
+		  		}
+		  		if(list['type'] == "checkbox"){
+		  			html +=apo_checkbox(list,'<div class="form-group">','</div>');
+		  		}
+		  		if(list['type'] == "field"){
+		  			html += apo_input(list,'<div class="form-group">','</div>');
+		  		}
+		  		if(list['type'] == "hidden"){
+		  			html +=apo_hiddenfield(list,'<div class="form-group">','</div>');
+		  		}
+	  			if(list['type'] == "drop_down"){
+	  				html +=apo_dropdown(list,'<div class="form-group">','</div>');
+	  			}
+
+	  		}
+
+	  	});
+
+	  });
+	  return html;
+
+	}
+
+	function apo_input(list,container_start,container_end){
+		var html = container_start+'<label for = "">'+list['title']+'</label><div>'+list['description']+'</div>';
+		html = html+ '<input type="text" class="form-control apo_option" name="'+list['id']+'"';
+		for(var i=0, l=list['values'].length; i<l; i++) {
+			var images = getImage(list['values'][i],list,false);
+			html = html + ' value="'+list['values'][i]['id']+'" ';
+
+		}
+		return html = html+ ' />'+images+container_end;
+	}
+	function apo_textarea(list,container_start,container_end){
+		var html = container_start+'<label for = "">'+list['title']+'</label><div>'+list['description']+'</div>';
+		html = html+ '<textarea class="form-control apo_option" rows="2" name="'+list['id']+'"';
+		for(var i=0, l=list['values'].length; i<l; i++) {
+			var images = getImage(list['values'][i],list,false);
+			html = html + ' value="'+list['values'][i]['id']+'" ';
+
+		}
+		return html = html+ ' ></textarea>'+images+container_end;
+	}
+	function apo_checkbox(list,container_start,container_end){
+		var html = container_start+'<label for = "">'+list['title']+'</label><div>'+list['description']+'</div>';
+		var values = list['values'];
+		values.sort(function(a, b) {
+		    return a.sort_order - b.sort_order;
+		});
+		for(var i=0, l=values.length; i<l; i++) {
+			var checked = (values[i]['default'] !='') ? 'checked' : '';
+			var images = getImage(values[i],list,false);
+			html = html + ''+images+' <div class="checkbox"> <label for="'+values[i]['id']+'"><input type="checkbox" '+checked+' id="'+values[i]['id']+'" name="'+list['id']+'" class="apo_option" value="'+values[i]['id']+'"> '+values[i]['title']+' ('+values[i]['price']+')</label></div>';
+
+		}
+		return html +=container_end;
+
+	}
+	function apo_dropdown(list,container_start,container_end){
+		var img_html = '';
+		var html = container_start+'<label for = "">'+list['title']+'</label><div>'+list['description']+'</div>';
+		html = html+ '<select class="form-control apo_option" name="'+list['id']+'">';
+		var values = list['values'];
+		values.sort(function(a, b) {
+		    return a.sort_order - b.sort_order;
+		});
+		for(var i=0, l=values.length; i<l; i++) {
+			//console.log(parseInt(values[i]['price'] ));
+			var original_price = '0';
+			var new_price = (original_price*1 + values[i]['price'] *1);
+
+			//var price = (values[i]['price'] !='') ? ' - '+original_price+ ' ' +values[i]['price'] : '';
+			var price = (values[i]['price'] !='') ? ' - $'+$.number( new_price, 0 ) : '';
+			var selected = (values[i]['default'] !='') ? 'selected' : '';
+			var images = getImage(values[i],list,true);
+			if(images)
+				img_html +=images;
+			//console.log(images);
+			html = html + '<option '+selected+' value="'+values[i]['id']+'">'+values[i]['title']+' '+price+'</option>';
+
+		}
+		return html = html+ '</select>'+img_html+container_end;
+
+	}
+	function apo_hiddenfield(list,container_start,container_end){
+
+
+		var html = container_start;
+		html = html+ '<input type="hidden" class="form-control apo_option" name="'+list['id']+'"';
+		for(var i=0, l=list['values'].length; i<l; i++) {
+
+			html = html + ' value="'+list['values'][i]['id']+'" ';
+
+		}
+		return html = html+ ' />'+container_end;
+
+	}
+	function apo_radiobutton(list,container_start,container_end){
+
+
+		var html = container_start+'<label for = "">'+list['title']+'</label><div>'+list['description']+'</div>';
+		var values = list['values'];
+		values.sort(function(a, b) {
+		    return a.sort_order - b.sort_order;
+		});
+		for(var i=0, l=values.length; i<l; i++) {
+			var checked = (values[i]['default'] !='') ? 'checked' : '';
+			var images = getImage(values[i],list,false);
+
+			html = html + ''+images+' <div class="radio">  <input type="radio" '+checked+' id="'+values[i]['id']+'" name="'+list['id']+'" class="apo_option" value="'+values[i]['id']+'"> <label for="'+values[i]['id']+'">'+values[i]['title']+' ('+values[i]['price']+')</label></div>';
+
+		}
+		return html +=container_end;
+	}
+	function getImage(values,list,hidden){
+		if(typeof values['images'] !== "undefined")
+		{
+			var images = values['images'];
+			for(var i=0, l=images.length; i<l; i++) {
+				if(images[i]['type'] == 'image')
+					return getImageTag(url+images[i]['value'],list['id'],values['id'],list['image_mode'],hidden);
+				else
+					return '';
+			}
+		}else{
+
+			return '';
+		}
+
+	}
+	function getImageTag(image,classname,id,image_mode,hidden){
+		if(typeof image !== "undefined")
+		{
+			var display = (hidden) ? 'none' : 'block';
+			var html = '<div class="'+classname+'" data-image_mode="'+image_mode+'" id="'+id+'" style="display:'+display+'"><img class="img-thumbnail" style="width:100px;" src="'+image+'"></div>';
+			return html;
+
+		}else{
+
+			return '';
+		}
+
+	}
+</script><script type="text/javascript">
+	var page_id = "20";
+</script>
+
+
+
+    <!-- banner Slider starts Here -->
+<script src="./PageRefDelbeautybox.com_files/responsiveslides.min.js.descarga"></script>
+
+<script>
+   $(document).ready(function(){
+   var pageTitle= $('[data-title]').attr('data-title')+"_sb";//concat _sb to make unic class name
+   $('body').addClass(pageTitle);
+  $(window).on('load', function(){
+      $(window).bind('scroll', function(){
+        if($(window).scrollTop() > $('.siteLogo').height()){
+        $('.mother-grid').addClass('scrolled');
+        }else{
+          $('.mother-grid').removeClass('scrolled');
+        }
+      });
+  });
+});
+  // You can also use "$(window).load(function() {"
+  $(function () {
+    $("#slider4").responsiveSlides({
+    auto: true,
+    pager: false,
+    nav: true,
+    speed: 500,
+    namespace: "callbacks",
+    before: function () {
+      $('.events').append("<li>before event fired.</li>");
+    },
+    after: function () {
+      $('.events').append("<li>after event fired.</li>");
+    }
+    });
+  });
+</script>
+      <!--//End-slider-script-->
+
+<link href="./PageRefDelbeautybox.com_files/default2.css" rel="stylesheet" type="text/css" media="all">
+<div class="main-container OtherPageStart " id="page-20" data-title="ourservices">
+    <div class="inner-container">
+        <!--<div class="title-container">
+          <h1> <br />
+<b>Notice</b>:  Undefined index: title in <b>/var/www/zangerine/live/addon/delbeautybox.com/themes/default/template/pages/pages.php</b> on line <b>47</b><br />
+ </h1>
+        </div>-->
+      <div class="content-container" data-themeurl="themes/default/">      <div class="container">
+<div class="row-fluid">
+<div class="span12 text-center color-black highlight-text">
+<h2><span class="light">Services</span></h2>
+<p class="general-text">No matter where the inspiration derives from for your next look, be it television, film, or the runway, Del Beauty Box is a hair salon that has the capability to get you there with confidence, creating a look that will meet and exceed your expectations. Using only the best products available in the industry, we ensure that your hair, face and body receive the best nourishment possible to maintain your look for as long as possible. Once you make an appointment at our beauty salon , we will give you expert advice on the best products for your particular hair to produce a singular look that works for you in every way imaginable. Del Beauty Bar delivers by giving our clients the quintessential look of distinction that every one wants and deserves. Del Beauty Box goes even further with their beauty services, offering you the best in bridal and special events assistance as well for those special occasions. Don't leave your big day to chance when you can receive a complimentary consultation from one of our elite stylists, who will go over a range of looks to complement you that will fit the tone for the event you are preparing for. At Del Beauty Box,  we offer a wide range of services and products to help you achieve a hue that is totally you. From basic root tints to highlights, outer colors or even corrective coloring, we take your hair and revitalize it, infusing it with just the right products and precision cutting to keep you up to date on the latest styles trending. So no matter what your hair color or type may be, we can take your locks and style, texture, layer, curl, and straighten to perfection, always using the best products and tools to create your final look and we are confident that we will make you look Great. </p>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+<div class="row-fluid">
+<div class="span4" id="FACIAL_THREADING_bg">
+<div class="shape_circle ourServices popup-with-move-anim" href="#FACIAL_THREADING_dialog">
+<div class="upText"></div>
+<div class="bottomText">FACIAL<br>THREADING</div>
+</div>
+</div>
+<div class="span4" id="HAIR_DESIGN_bg">
+<div class="shape_circle ourServices popup-with-move-anim" href="#HAIR_DESIGN_dialog">
+<div class="upText"></div>
+<div class="bottomText">HAIR DESIGN</div>
+</div>
+</div>
+<div class="span4" id="FACIAL_VAXING_bg">
+<div class="shape_circle ourServices popup-with-move-anim" href="#FACIAL_VAXING_dialog">
+<div class="upText"></div>
+<div class="bottomText">WAXING</div>
+</div>
+</div>
+</div>
+<!-- <div class="row-fluid">
+<div class="span4" id="LASH_APPLICATION_bg">
+<div class="shape_circle ourServices popup-with-move-anim" href="#LASH_APPLICATION_dialog">
+<div class="upText"></div>
+<div class="bottomText">LASH APPLICATION</div>
+</div>
+</div> -->
+<!-- <div class="span4" id="MAKE_UP_bg">
+<div class="shape_circle ourServices popup-with-move-anim" href="#MAKE_UP_dialog">
+<div class="upText"></div>
+<div class="bottomText">MAKEUP</div>
+</div>
+</div> -->
+<div class="span4" id="TINTING_bg">
+<div class="shape_circle ourServices popup-with-move-anim" href="#TINTING_dialog">
+<div class="upText"></div>
+<div class="bottomText">TINTING</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="FACIAL_THREADING_dialog" class="services-popup-dialog zoom-anim-dialog mfp-hide">
+<h3>FACIAL THREADING</h3>
+<ul>
+<li>Brow Shaping</li>
+<li>Lip</li>
+<li>Chin</li>
+<li>Sides</li>
+<li>Forehead</li>
+<li>Full Face</li>
+</ul>
+</div>
+<div id="HAIR_DESIGN_dialog" class="services-popup-dialog zoom-anim-dialog mfp-hide">
+<h3>HAIR DESIGN</h3>
+<ul>
+<li>Women's Hair Cut</li>
+<li>Men's Hair Cut</li>
+<li>Children's Hait Cut</li>
+<li>Color Touch up</li>
+<li>Full Color</li>
+<li>Glaze &amp; Toner</li>
+<li>Partial Highlights</li>
+<li>Full Highlights</li>
+<li>Base Color &amp; Highlights</li>
+<li>Shampoo Blow Dry</li>
+<li>Roller Set</li>
+<li>Conditioning Treatment</li>
+<li>Split Ends Treatment</li>
+<li>Permanent Wave</li>
+<li>Keratin Treatment</li>
+<li>Updo Style</li>
+<li>Trial Updo</li>
+<li>bridal Updo</li>
+<li>Color Correction upon Consultation</li>
+<li>Hair Extension upon Consultation</li>
+<li>Hair System / Hair Replacement</li>
+</ul>
+</div>
+<div id="FACIAL_VAXING_dialog" class="services-popup-dialog zoom-anim-dialog mfp-hide">
+<h3>FACIAL WAXING</h3>
+<ul>
+<li>Electrolysis Hair Removal</li>
+<li>Brow shaping</li>
+<li>Lip</li>
+<li>Chin</li>
+<li>Sides</li>
+<li>Forehead</li>
+<li>Full Face</li>
+<li>Brazilian</li>
+<li>Hair Lines</li>
+<li>Chest</li>
+<li>Underarms</li>
+<li>Arms</li>
+<li>Bikini</li>
+<li>Back or Chest</li>
+<li>Legs</li>
+</ul>
+</div>
+<!-- <div id="LASH_APPLICATION_dialog" class="services-popup-dialog zoom-anim-dialog mfp-hide">
+<h3>LASH APPLICATION</h3>
+<ul>
+<li>Eyebrow Microblading</li>
+<li>Strip Lash Application</li>
+<li>Individual Lash Application</li>
+<li>Lash Extension</li>
+<li>Fill in Lash Exten.(2 weeks &amp; less)</li>
+<li>Fill in Lash Exten.(3 weeks &amp; less)</li>
+<ul></ul>
+</ul>
+</div> -->
+<!-- <div id="MAKE_UP_dialog" class="services-popup-dialog zoom-anim-dialog mfp-hide">
+<h3>MAKEUP</h3>
+<ul>
+<li>HD Makeup (Camera-Ready)</li>
+<li>Air Brush Makeup</li>
+<li>Day Makeup</li>
+<li>Night Makeup</li>
+<li>Trial Makeup</li>
+<li>Bridal Makeup</li>
+</ul>
+</div>
+<div id="TINTING_dialog" class="services-popup-dialog zoom-anim-dialog mfp-hide">
+<h3>TINTING</h3>
+<ul>
+<li>Brow Tint</li>
+<li>Lash Tint</li>
+<li>Brow &amp; Lash Tint</li>
+</ul>
+</div> -->
+<script>// <![CDATA[
+$(document).ready(function() {
+//this function used for making popup
+	$('.popup-with-move-anim').magnificPopup({
+		type: 'inline',
+
+		fixedContentPos: false,
+		fixedBgPos: true,
+
+		overflowY: 'auto',
+
+		closeBtnInside: true,
+		preloader: false,
+
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'my-mfp-slide-bottom'
+	});
+});
+// ]]></script><br><br>
+
+      </div>
+    </div>
+
+<ul id="menu">
+<li style="list-style:none;"><a href="https://delbeautybox.com/index.html#appointment"><span style="color:#fff;font-size: 12px;font-weight: bold;">Make An Appointment</span></a>
+
+</li></ul>
+<div style="border:">
+<div class="span4 offset4 PriTbl-MAP" style="background: #111;">
+<h4><a href="https://delbeautybox.com/index.html#appointment"><strong>MAKE AN APPOINTMENT</strong></a></h4>
+<!---<p style="color:white;"><strong>If you are interested in a consultation, please <a href="https://app.salonrunner.com/customer/login.htm?id=24322">schedule an appointment</a> here. Alternatively, you may give us a call @ <a href="tel:8582594247">858 259 4247</a> . At Del Beauty Box, we are serious about the business of beauty. Contact us today and begin the transformation in capable hands.</strong></p>
+-->
+</div>
+</div>
+      <a href="https://delbeautybox.com/ourservices.html#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+      <div class="clearfix"> </div>
+<div id="signature"><div class="row-fluid"><div class="span6"><p class="right">delbeautybox.com</p></div><div class="span6"><p class="left"> </p></div></div>
+
+ <div class="page-content page-container row-fluid span6 right" id="page-content">
+    <div class="container d-flex justify-content-center">
+            <div class="grid-margin stretch-card">
+             <div class="template-demo"> <a href="https://www.yelp.com/biz/del-beauty-box-del-mar"><button type="button" class="btn btn-social-icon btn-outline-instagram"><i class="fa fa-yelp" style="font-size:25px;color:#dc4a38"></i></button></a><a href="https://www.facebook.com/delbeautybox"> <button type="button" class="btn btn-social-icon btn-outline-facebook"><i class="fa fa-facebook" style="font-size:25px; color:#3b579d"></i></button></a> <a href="https://in.pinterest.com/delbeautybox1/"><button type="button" class="btn btn-social-icon btn-outline-youtube"><i class="fa fa-pinterest" style="font-size:25px; color:#dc4a38"></i></button></a> <a href="https://twitter.com/delbeautybox1"><button type="button" class="btn btn-social-icon btn-outline-twitter"><i class="fa fa-twitter" style="font-size:25px; color:#2caae1"></i></button></a>   <a href="https://www.instagram.com/delbeautybox/"><button type="button" class="btn btn-social-icon btn-outline-instagram"><i class="fa fa-instagram" style="font-size:25px; color:#dc4a38"></i></button></a> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    var defaults = {
+        containerID: 'toTop', // fading element id
+      containerHoverID: 'toTopHover', // fading element hover id
+      scrollSpeed: 1200,
+      easingType: 'linear'
+    };
+    $().UItoTop({ easingType: 'easeOutQuart' });
+  });
+</script>
+
+
+<script>
+$(document).ready(function() {
+
+  $('input#datepicker').Zebra_DatePicker({
+    always_visible: $('#Datecontainer'),
+    show_select_today:false,
+    show_clear_date:false,
+     direction:true
+    });
+    $('input#ContactDataPicker').Zebra_DatePicker({
+    direction: true
+    });
+ });
+</script>
+<script>
+$(document).ready(function() {
+
+     $("input#datepicker").val( moment().format('YYYY-MM-DD') );
+
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('#status').fadeOut(); // will first fade out the loading animation
+      $('#preloader').fadeOut('fast'); // will fade out the white DIV that covers the website.
+      $('body').delay(350).css({'overflow':'visible'});
+    });
+    $(window).load(function() { // makes sure the whole site is loaded
+      $('#status').fadeOut(); // will first fade out the loading animation
+      $('#preloader').fadeOut('fast'); // will fade out the white DIV that covers the website.
+      $('body').delay(350).css({'overflow':'visible'});
+    })
+</script>
+
+
+
+
+
+
+
+
+		<!-- New js -->
+<script src="./PageRefDelbeautybox.com_files/move-top.js.descarga" type="text/javascript"></script>
+<script src="./PageRefDelbeautybox.com_files/easing.js.descarga" type="text/javascript"></script>
+<script type="text/javascript" src="./PageRefDelbeautybox.com_files/zebra_datepicker.js.descarga"></script>
+<script type="text/javascript" src="./PageRefDelbeautybox.com_files/moment.js.descarga"></script>
+<script type="text/javascript" src="./PageRefDelbeautybox.com_files/jquery.magnific-popup.min.js.descarga"></script>
+<script src="./PageRefDelbeautybox.com_files/jquery.magnific-popup.min.js.descarga"></script>
+<script src="./PageRefDelbeautybox.com_files/timepicki.js.descarga"></script>
+<script src="./PageRefDelbeautybox.com_files/jquery.swipebox.min.js.descarga"></script>
+<script src="./PageRefDelbeautybox.com_files/faq-accordion.js.descarga"></script>
+
+<script src="./PageRefDelbeautybox.com_files/responsiveslides.min.js.descarga"></script>
+
+<script type="text/javascript" src="./PageRefDelbeautybox.com_files/jquery.flexisel.js.descarga"></script>
+<script>
+	 $(document).ready(function(){
+	 var pageTitle= $('[data-title]').attr('data-title')+"_sb";//concat _sb to make unic class name
+	 $('body').addClass(pageTitle);
+	$(window).on('load', function(){
+			$(window).bind('scroll', function(){
+				if($(window).scrollTop() > $('.siteLogo').height()){
+				$('.mother-grid').addClass('scrolled');
+				}else{
+					$('.mother-grid').removeClass('scrolled');
+				}
+			});
+	});
+});
+	// You can also use "$(window).load(function() {"
+	$(function () {
+	  $("#slider4").responsiveSlides({
+		auto: true,
+		pager: false,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks",
+		before: function () {
+		  $('.events').append("<li>before event fired.</li>");
+		},
+		after: function () {
+		  $('.events').append("<li>after event fired.</li>");
+		}
+	  });
+	});
+</script>
+			<!--//End-slider-script-->
+
+
+<script type="text/javascript">
+	$(document).ready(function($) {
+				$('input#ContactDataPicker').Zebra_DatePicker();
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+			$(document).ready(function() {
+
+	});
+</script>
+<script>
+  $("input#TimePickerTxt").timepicki();
+</script>
+<script type="text/javascript">
+		;(function($){
+			$('.swipebox').swipebox();
+		})(jQuery);
+	</script>
+
+
+
+   <script src="./PageRefDelbeautybox.com_files/f5f5fd17b2.js.descarga" async=""></script>
+	<script src="./PageRefDelbeautybox.com_files/jquery.number.min.js.descarga"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"c4a623115d","applicationID":"378938386","transactionName":"blZTbEZXDEJUVUFRDlccZEpdGQtfUVNNFhFRQw==","queueTime":0,"applicationTime":120,"atts":"QhFQGg5NH0w=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+
+<style>
+#menu {
+z-index: 5;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    text-align: left;
+    border: #fff;
+    border-right: none;
+    padding: 0.5em 0.5em 0.5em 2.5em;
+    box-shadow: 0 1px 3px black;
+    border-radius: 3em 0.5em 0.5em 3em;
+	    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 8em;
+    margin: -2.5em 0 0 0;
+}
+
+ body {
+     background-color: #f9f9fa
+ }
+
+ .flex {
+     -webkit-box-flex: 1;
+     -ms-flex: 1 1 auto;
+     flex: 1 1 auto
+ }
+
+ @media (max-width:991.98px) {
+     .padding {
+         padding: 1.5rem
+     }
+ }
+
+ @media (max-width:767.98px) {
+     .padding {
+         padding: 1rem
+     }
+ }
+
+ .padding {
+     padding: 3rem
+ }
+
+ .card {
+     box-shadow: none;
+     -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+     -ms-box-shadow: none
+ }
+
+ .card {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: border-box;
+     border: 1px solid #3da5f;
+     border-radius: 0
+ }
+
+ .card .card-body {
+     padding: 1.25rem 1.75rem
+ }
+
+ .card .card-title {
+     color: #000000;
+     margin-bottom: 0.625rem;
+     text-transform: capitalize;
+     font-size: 0.875rem;
+     font-weight: 500
+ }
+
+ .card .card-description {
+     margin-bottom: .875rem;
+     font-weight: 400;
+     color: #76838f
+ }
+
+ .btn.btn-social-icon {
+     width: 50px;
+     height: 50px;
+     padding: 0
+ }
+
+ .template-demo>.btn {
+     margin-right: 0.5rem !important
+ }
+
+ .template-demo {
+     margin-top: 0.5rem !important
+ }
+
+ .btn.btn-rounded {
+     border-radius: 50px
+ }
+
+ .btn-outline-facebook {
+     border: 1px solid #3b579d;
+     color: #3b579d
+ }
+
+ .btn-outline-facebook:hover {
+     background: #3b579d;
+     color: #ffffff
+ }
+
+ .btn-outline-youtube {
+     border: 1px solid #e52d27;
+     color: #e52d27
+ }
+
+ .btn-outline-twitter {
+     border: 1px solid #2caae1;
+     color: #2caae1
+ }
+
+ .btn-outline-dribbble {
+     border: 1px solid #ea4c89;
+     color: #ea4c89
+ }
+
+ .btn-outline-linkedin {
+     border: 1px solid #0177b5;
+     color: #0177b5
+ }
+
+ .btn-outline-instagram {
+     border: 1px solid #dc4a38;
+     color: #dc4a38
+ }
+
+ .btn-outline-twitter:hover {
+     background: #2caae1;
+     color: #ffffff
+ }
+
+ .btn-outline-linkedin:hover {
+     background: #0177b5;
+     color: #ffffff
+ }
+
+ .btn-outline-youtube:hover {
+     background: #e52d27;
+     color: #ffffff
+ }
+
+ .btn-outline-instagram:hover {
+     background: #e52d27;
+     color: #ffffff
+ }
+
+ .btn-facebook {
+     background: #3b579d;
+     color: #ffffff
+ }
+
+ .btn-youtube {
+     background: #e52d27;
+     color: #ffffff
+ }
+
+ .btn-twitter {
+     background: #2caae1;
+     color: #ffffff
+ }
+
+ .btn-dribbble {
+     background: #ea4c89;
+     color: #ffffff
+ }
+
+ .btn-linkedin {
+     background: #0177b5;
+     color: #ffffff
+ }
+
+ .btn-instagram {
+     background: #dc4a38;
+     color: #ffffff
+ }
+
+ .btn-facebook:hover,
+ .btn-facebook:focus {
+     background: #2d4278;
+     color: #ffffff
+ }
+
+ .btn-youtube:hover,
+ .btn-youtube:focus {
+     background: #c21d17;
+     color: #ffffff
+ }
+
+ .btn-twitter:hover,
+ .btn-twitter:focus {
+     background: #1b8dbf;
+     color: #ffffff
+ }
+
+ .btn-dribbble:hover,
+ .btn-dribbble:focus {
+     background: #e51e6b;
+     color: #ffffff
+ }
+
+ .btn-linkedin:hover,
+ .btn-linkedin:focus {
+     background: #015682;
+     color: #ffffff
+ }
+
+ .btn-instagram:hover,
+ .btn-instagram:focus {
+     background: #bf3322;
+     color: #ffffff
+ }
+.navbar {
+    border-radous:0;
+    border:0;
+    margin:0;
+}
+.top-line {
+    padding: 10px 0;
+    background: #666;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    overflow: hidden;
+}
+.top-line p, .top-line a {
+    color: #ffffff;
+    margin: 0;
+}
+.top-line p span { margin-right: 20px; }
+.top-line p span i {
+    font-size: 13px;
+    color:#fff;
+    margin-right: 10px;
+}
+.top-line ul.social-icons {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+.top-line ul.social-icons li {
+    display: inline-block;
+    margin-left: 9px;
+}
+.top-line ul.social-icons li a {
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    font-size: 14px;
+    color: #ffffff;
+}
+.top-line ul.social-icons li a:hover { color: #ffba00; }
+header.active .top-line {
+    height: 0;
+    padding: 0;
+}
+/*** Brand logo ***/
+
+.brand {
+    width: 200px;
+    height: 90px;
+}
+.brand a { display:block }
+.brand, .header-inner .main-nav {
+    display: table-cell;
+    vertical-align: middle;
+}
+/*** Main Nav Menu ***/
+.main-nav {
+    text-align: right;
+    white-space: nowrap;
+    padding: 0 0 0 30px;
+    width:100%;
+}
+.sf-menu, .sf-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.main-nav .sf-menu li { position: relative; }
+.main-nav .sf-menu li:hover, .sf-menu li.sfHover {
+    -webkit-transition: none;
+    transition: none;
+}
+.main-nav .sf-menu li a {
+    color: #666;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 90px;
+    padding: 0 15px;
+    position: relative;
+    text-transform: capitalize;
+}
+.main-nav .sf-menu li.current a { color: #424E75; }
+.main-nav .sf-menu li.current ul a { color: #424E75; }
+.main-nav .sf-menu li ul li.current a { color: #424E75; }
+.main-nav .sf-menu ul {
+    background-color: #fff;
+    position: absolute;
+    z-index: 6000;
+    display: none;
+    min-width: 12em; /* allow long menu items to determine submenu width */
+ *width: 12em; /* no auto sub width for IE7, see white-space comment below */
+    top: 99%;
+    left: 0;
+    z-index: 99;
+    margin: 1px 0;
+    padding: 0;
+    border-top: solid 2px #c44741;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+}
+.main-nav .sf-menu > li { display: inline-block; }
+.main-nav .sf-menu li:hover > ul, .main-nav .sf-menu li.sfHover > ul { display: block; }
+.main-nav .sf-menu a {
+    display: block;
+    position: relative;
+}
+.main-nav .sf-menu a:hover { color: #c44741; }
+.main-nav .sf-menu ul li {
+    width: 180px;
+    background: #fff;
+    text-align: left;
+    border-left: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+}
+.main-nav .sf-menu ul li a {
+    padding: 10px 15px;
+    font-size: 13px;
+}
+.main-nav .sf-menu ul ul {
+    top: 0;
+    left: 100%;
+}
+.main-nav .sf-menu ul ul li {
+    background: #fff;
+    border-left: solid 1px #eee;
+}
+/*** arrows (for all except IE7) **/
+.sf-arrows .sf-with-ul { padding-right: 2.5em; *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
+}
+.sf-arrows > li > .sf-with-ul:focus:after, .sf-arrows > li:hover > .sf-with-ul:after, .sf-arrows > .sfHover > .sf-with-ul:after { border-top-color: white; /* IE8 fallback colour */ }
+.sf-arrows ul li > .sf-with-ul:focus:after, .sf-arrows ul li:hover > .sf-with-ul:after, .sf-arrows ul .sfHover > .sf-with-ul:after { border-left-color: #999; }
+.header-inner #toggle-btn {
+    cursor: pointer;
+    font-size: 17px;
+    height: 45px;
+    line-height: 45px;
+    position: absolute;
+    right: 15px;
+    text-align: center;
+    top: 20px;
+    width: 45px;
+}
+.header-inner .toggle-subarrow { display: none; }
+ @media (min-width: 768px) {
+ .header-inner #toggle-btn {
+ display: none;
+}
+}
+ @media (max-width: 768px) {
+ .navbar-brand {
+ display: block;
+}
+.responsive {
+ display: none;
+}
+ .navbar {
+ max-height: none;
+}
+.main-nav {
+ margin-top: 10px;
+ height: auto;
+}
+.sf-menu > li {
+ float: none;
+}
+.sf-menu li a {
+ padding: 10px 13px;
+ font-weight: 400;
+}
+ .sf-menu li a:hover, .sf-menu li.sfHover a:hover {
+ color: #c44741;
+}
+ .sf-menu ul {
+ font-size: 14px;
+ display: block;
+ position: static !important;
+ border: 0;
+ box-shadow: 0 0 0 0;
+ -moz-box-shadow: 0 0 0 0;
+ -webkit-box-shadow: 0 0 0 0;
+}
+}
+ @media only screen and (max-width: 768px) {
+ .header-inner .main-nav {
+ display: block;
+ margin: 0;
+}
+ #toggle-btn {
+ display: block;
+}
+ .toggle-subarrow {
+ display: block !important;
+ cursor: pointer;
+ position: absolute;
+ right: 0;
+ top: 0;
+ width: 45px;
+ height: 42px;
+ border-left: 1px solid #e8e8e8;
+ text-align: center;
+ color: #777;
+}
+ .toggle-subarrow .fa {
+ margin-top:14px;
+}
+ .main-nav {
+ text-align: left;
+ white-space: nowrap;
+ padding: 0;
+}
+ .sf-menu {
+ display: none;
+}
+
+
+ .main-nav .sf-menu {
+ margin: 0 -15px;
+}
+ .main-nav .sf-menu > li {
+ font-size: 13px;
+ line-height: 16px;
+ display: block;
+ border-top: 1px solid #F96
+}
+ .main-nav .sf-menu li a {
+ color: #fff;
+ padding: 20px;
+ line-height:0px;
+ display: block;
+ position: relative;
+ background-color:#08991C;
+ text-align:center
+}
+ .main-nav .sf-menu ul {
+border: none;
+}
+ .main-nav .sf-menu ul li {
+ width: 100%;
+ margin-left: 30px;
+ font-size: 13px;
+ line-height: 16px;
+ font-weight: 400;
+ position: relative;
+ border:none;
+ border-top: 1px solid #e8e8e8;
+}
+ .sf-menu ul {
+ position:static!important;
+ display: none!important;
+}
+ .mob-drop ul {
+ display: block!important;
+}
+   @media(min-width: 601px) and (max-width: 780px) {
+.top-line .container {
+ max-width:70%;
+}
+ .top-line p span {
+ display: table;
+ margin-right: 20px;
+ text-align: left;
+}
+.responsive {
+ display: none;
+}
+}
+
+</style>
+<script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {Function()};
+
+// Get the header
+var header = document.getElementById("myHeader");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function Function() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
+<style>
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+</style>
+</body></html>
