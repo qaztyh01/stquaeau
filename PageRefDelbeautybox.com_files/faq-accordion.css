@@ -1,0 +1,57 @@
+.accordion {
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+.accordion-item {
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+#accordion_header .accordion-item .accordion-head {
+    border-top: 1px solid #3F7AB7;
+}
+.accordion-head {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.accordion-toggler.active-item {
+    background-image: url(../img/minus.png);
+}
+
+.accordion-toggler {
+    float: left;
+    background-image: url(../img/plus.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    -webkit-transition: background-color ease 0.7s;
+    -moz-transition: background-color ease 0.7s;
+    -ms-transition: background-color ease 0.7s;
+    -o-transition: background-color ease 0.7s;
+    transition: background-color ease 0.7s;
+}
+.background-color {
+    background-color: #3F7AB7!important;
+}
+.accordion-title {
+    float: left;
+    font-size: 15px;
+    line-height: 30px;
+}
+.accordion-text {
+    float: left;
+    width: 100%;
+    font-size: 13px;
+    display: none;
+}
+#live-search .text-input {
+    width: 350px;
+    height: 30px;
+    font-size: 17px;
+    border: 1px solid #3F7AB7;
+}

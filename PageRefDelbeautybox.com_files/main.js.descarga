@@ -1,0 +1,1476 @@
+function cookiesEnabled() { // This would warn the users if their cookies are disables
+    var cookieEnabled = (navigator.cookieEnabled) ? true : false;
+    if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled) {
+        document.cookie = "testcookie";
+        cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+        document.cookie = "testcookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    return (cookieEnabled);
+}
+
+ajaxQueue = $({});
+function ajaxQueueFun(ajaxOpts) {
+    if (ajaxOpts == 'clear') {
+        ajaxQueue.clearQueue();
+        return promise;
+    }
+    var jqXHR,
+        dfd = $.Deferred(),
+        promise = dfd.promise();
+    function doRequest(next) {
+        jqXHR = $.ajax(ajaxOpts);
+        jqXHR.done(dfd.resolve)
+            .fail(dfd.reject)
+            .then(next, next);
+    }
+    this.ajaxQueue.queue(doRequest);
+    promise.abort = function (statusText) {
+        if (jqXHR) {
+            return jqXHR.abort(statusText);
+        }
+        var queue = this.ajaxQueue.queue(),
+            index = $.inArray(doRequest, queue);
+
+        if (index > -1) {
+            queue.splice(index, 1);
+        }
+        dfd.rejectWith(ajaxOpts.context || ajaxOpts, [promise, statusText, ""]);
+        return promise;
+    };
+    return promise;
+};
+
+var account = new function () {
+    this.themeUrl;
+    this.loginAlertTag;
+    this.wishlistAlertTag;
+    this.wishlistCreateAlertTag;
+    this.movewishlistCartAlertTag;
+    this.loginAlertTag;
+    this.loginURL;
+    this.facebookLoginURL;
+    this.loginSuccessMessage;
+    this.loginErrorMessage;
+    this.resetAlertTag;
+    this.resetURL;
+    this.resetSuccessMessage;
+    this.resetErrorMessage;
+    this.registerAlertTag;
+    this.registerURL;
+    this.changePassTag;
+    this.changePassURL;
+    this.isCheckout = false;
+    this.base;
+
+    this.showMessage = function ($tag, $class, $message) {
+        $($tag).fadeOut().removeClass().addClass($class).html($message).fadeIn();
+    };
+
+    this.submitForm = function (_name, _data) {
+        ajaxQueueFun({
+            type: 'post',
+            data: _data,
+            url: this.themeUrl + "submitform.php",
+            dataType: "json",
+            context: account,
+            beforeSend: function () {
+                $("form[name=contact] input[type=submit]").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    if (_name == "quote") {
+                        $('#request-quote-form')[0].reset();
+                    } else {
+                        $('form[name=contact]')[0].reset();
+                    }
+
+                    if (_name == "quote") {
+                        this.showMessage("#request-quote-alert", "alert alert-success", "Messege Sent");
+                    } else {
+                        this.showMessage("#_contact_form", "alert alert-success", "Messege Sent");
+                    }
+                } else {
+                    if (_name == "quote") {
+                        this.showMessage("#request-quote-alert", "alert alert-danger", "Error During Sent Messege");
+                    } else {
+                        this.showMessage("#_contact_form", "alert alert-danger", "Error During Sent Messege");
+                    }
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        }).done(function () {
+            $("form[name=contact] input[type=submit]").val("Submit").prop("disabled", false);
+        });
+    }
+
+    this.login = function (FormData) {
+        $(this.loginAlertTag).fadeOut();
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.loginURL,
+            context: account,
+            dataType: "json",
+            beforeSend: function () {
+                $("form#login input[type='submit']").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.loginAlertTag, "alert alert-success", this.loginSuccessMessage);
+                    // Check for the redirect page
+                    var redirectPage = this.getParameterByName("redirectPage", FormData);
+
+                    if (this.isCheckout) {
+                        var login_redirect_url = window.location.href;
+                        if (login_redirect_url.indexOf('?') > -1) {
+                            login_redirect_url += '&action=login'
+                        } else {
+                            login_redirect_url += '?action=login'
+                        }
+                        //location.reload();
+                    } else if (redirectPage == null || redirectPage == '') {
+                        var login_redirect_url = url + 'account' + window.location.search;
+                    } else {
+                        var login_redirect_url = this.base + redirectPage;
+                    }
+
+                    window.location.href = login_redirect_url;
+
+                } else {
+                    if (e.replace_error) {
+                        this.showMessage(this.loginAlertTag, "alert alert-danger", e.text);
+                    } else {
+                        this.showMessage(this.loginAlertTag, "alert alert-danger", this.loginErrorMessage);
+                    }
+                }
+            },
+            error: function (e) {
+                console.log(e);
+                alert('Error occured during login process! ' + e);
+            }
+        }).done(function () {
+            $("form#login input[type='submit']").val("Login").prop("disabled", false);
+        });
+    };
+
+    this.facebook_login = function (FormData) {
+        var FBLoginURL = this.facebookLoginURL;
+        FB.login(function (response) {
+
+            if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', { fields: 'name,email,first_name,last_name' }, function (response) {
+
+                    $(this.loginAlertTag).fadeOut();
+                    ajaxQueueFun({
+                        type: 'post',
+                        data: { name: response.name, first_name: response.first_name, last_name: response.last_name, email: response.email },
+                        url: FBLoginURL,
+                        context: account,
+                        dataType: "json",
+                        success: function (e) {
+                            if (e.type == "success") {
+                                this.showMessage(this.loginAlertTag, "alert alert-success", this.loginSuccessMessage);
+                                // Check for the redirect page
+                                var redirectPage = this.getParameterByName("redirectPage", FormData);
+
+                                if (this.isCheckout || redirectPage == null || redirectPage == '') {
+                                    var login_redirect_url = window.location.href;
+                                    if (login_redirect_url.indexOf('?') > -1) {
+                                        login_redirect_url += '&action=login'
+                                    } else {
+                                        login_redirect_url += '?action=login'
+                                    }
+                                    //location.reload();
+                                } else {
+                                    var login_redirect_url = this.base + redirectPage;
+                                }
+
+                                window.location.href = login_redirect_url;
+
+                            } else {
+                                this.showMessage(this.loginAlertTag, "alert alert-danger", this.loginErrorMessage);
+                            }
+                        },
+                        error: function (e) {
+                            console.log(e);
+                            alert('Error occured during login process! ' + e);
+                        }
+                    }).done(function () {
+                        $("form#login input[type='submit']").val("Login").prop("disabled", false);
+                    });
+
+                });
+            } else {
+                this.showMessage(this.loginAlertTag, "alert alert-danger", this.loginErrorMessage);
+            }
+
+        }, { scope: 'email,user_likes' });
+
+    };
+
+    this.reset = function (FormData) {
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.resetURL,
+            context: account,
+            dataType: "json",
+            beforeSend: function () {
+                $("form#reset-pass input[type='submit']").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.resetAlertTag, "alert alert-success", this.resetSuccessMessage);
+                    intervalObject = setInterval(
+                        function () {
+                            clearInterval(intervalObject);
+                            window.location.href = "/login";
+                        },
+                        2000
+                    );
+                } else {
+                    if (e.replace_error) {
+                        this.showMessage(this.resetAlertTag, "alert alert-danger", e.text);
+                    } else {
+                        this.showMessage(this.resetAlertTag, "alert alert-danger", this.resetErrorMessage);
+                    }
+                }
+            },
+            error: function (e) {
+                alert('Error: ' + e);
+            }
+        }).done(function () {
+            $("form#reset-pass input[type='submit']").val("Reset Password").prop("disabled", false);
+        });
+    };
+
+    this.register = function (FormData) {
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.registerURL,
+            context: account,
+            dataType: "json",
+            beforeSend: function () {
+                $("form#register input[type='submit']").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.registerAlertTag, "alert alert-success", e.text);
+
+                    // Check for the redirect page
+                    var redirectPage = this.getParameterByName("redirectPage", FormData);
+
+                    if (redirectPage == null || redirectPage == '') {
+                        var register_redirect_url = this.base + "account";
+                    } else {
+                        var register_redirect_url = this.base + redirectPage;
+                    }
+
+                    window.location.href = register_redirect_url;
+                    //location.reload();
+                } else {
+                    this.showMessage(this.registerAlertTag, "alert alert-danger", e.text);
+                }
+            },
+            error: function (e) {
+                alert('Error: ' + e);
+            }
+        }).done(function () {
+            $("form#register input[type='submit']").val("Create account").prop("disabled", false);
+        });
+    };
+
+    this.changePassword = function (FormData) {
+
+        var pass1 = $("form#NewPasswordForm input[name='newpass1']").val();
+        var pass2 = $("form#NewPasswordForm input[name='newpass2']").val();
+        if (pass1.length == 0 || pass2.length == 0) {
+            this.showMessage(this.changePassTag, "alert alert-danger", "Enter Password")
+            return false;
+        } else if (pass1.length < 6 || pass2.length < 6) {
+            this.showMessage(this.changePassTag, "alert alert-danger", "Password Is Short")
+            return false;
+        } else if (pass1 != pass2) {
+            this.showMessage(this.changePassTag, "alert alert-danger", "Passwords do not match")
+            return false;
+        }
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.changePassURL,
+            context: account,
+            dataType: "json",
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.changePassTag, "alert alert-success", "success");
+                    window.location.href = this.base + "login";
+                } else {
+                    this.showMessage(this.changePassTag, "alert alert-danger", e.text);
+                }
+            },
+            error: function (e) {
+                alert("Error " + e);
+            }
+        });
+    };
+
+    this.purchaseOrder = function (FormData) {
+        startLoader();
+        ajaxQueueFun("clear");
+        $(this).prop('disabled', true);
+        ajaxQueueFun({
+            type: 'post',
+            url: this.updateStatusUrl,
+            data: FormData,
+            context: account,
+            success: function (e) {
+                if (e == true) {
+                    window.location.href = this.successUrl;
+                } else {
+                    alert(e);
+                }
+            },
+            error: function () {
+                alert('Something went wrong! We were not able to process your request. ' + e);
+            }
+        });
+    };
+
+    this.getParameterByName = function (name, url) {
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+
+        if (!results) {
+            return null;
+        }
+
+        if (!results[2]) {
+            return '';
+        }
+
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    };
+
+    this.addToWishlist = function (product_id, customer_id, qty, listname, this_ele) {
+
+        if (customer_id == '0') {
+            alert('Please login first!');
+            return false;
+        }
+
+        ajaxQueueFun({
+            type: 'post',
+            data: { productID: product_id, qty: qty, customerID: customer_id, list_name: listname, action: 'add' },
+            url: this.base + "resources/ajax/wishlist.php?action=add",
+            success: function (e) {
+                account.showMessage(account.wishlistAlertTag, "alert alert-success", 'Product Added to your list <a target="_blank" href="/wishlist?list=' + listname + '"> ' + listname + '</a>');
+            },
+            error: function (e) {
+                account.showMessage(account.wishlistAlertTag, "alert alert-danger", 'There is something wrong went! Please try again.');
+                alert('error: ' + e);
+            }
+        });
+    };
+
+    this.updateListQty = function (list_id) {
+        var qty = $('#listqty-' + list_id).val();
+        if (qty == 0) {
+            account.showMessage(account.movewishlistCartAlertTag, "alert alert-danger", 'Product QTY error!');
+            return;
+        }
+        ajaxQueueFun({
+            type: 'post',
+            data: { list_id: list_id, qty: qty, action: 'update' },
+            url: this.base + "resources/ajax/wishlist.php?action=update",
+            success: function (e) {
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-success", 'Product updated to your list.');
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            },
+            error: function (e) {
+                var output = e.responseJSON;
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-danger", output.message);
+            }
+        });
+    };
+
+    this.removeWishlist = function (list_id) {
+        if (customer_id == '0') {
+            alert('Please login first!');
+            return false;
+        }
+        ajaxQueueFun("clear");
+        ajaxQueueFun({
+            type: 'post',
+            data: { list_id: list_id, action: 'delete' },
+            context: dfsales,
+            url: this.base + "resources/ajax/wishlist.php?action=delete",
+            success: function (e) {
+                location.reload();
+            },
+            error: function (e) {
+                var output = e.responseJSON;
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-danger", output.message);
+            }
+        });
+    };
+
+    this.createWishlistModal = function (customer_id) {
+        if (customer_id == '0') {
+            alert('Please login first!');
+            return false;
+        }
+        $('#myWishListDialog').modal('show');
+    };
+
+    this.createWishlist = function (FormData) {
+        var qty = $('input#wishlistqty').val();
+        var listname = $('input[name="list_name"]').val();
+        var track_id = $('body').attr("id");
+        if (track_id) {
+            track_id = track_id.replace('track-', '')
+        }
+        ajaxQueueFun("clear");
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData + "&qty=" + qty + "&track_id=" + track_id + "&action=createlist",
+            context: account,
+            url: this.base + "resources/ajax/wishlist.php",
+            success: function (e) {
+                account.showMessage(account.wishlistCreateAlertTag, "alert alert-success", 'Product Added to your list <a target="_blank" href="/wishlist?list=' + listname + '"> ' + listname + '</a>');
+                setTimeout(function () {
+                    location.href = "/wishlist/?list=" + listname;
+                }, 1500);
+            },
+            error: function (e) {
+                var output = e.responseJSON;
+                account.showMessage(account.wishlistCreateAlertTag, "alert alert-danger", (output.message) ? output.message : 'There is something went wrong. Please try again!');
+            }
+        });
+    };
+
+    this.wishlistfilter = function (elem) {
+        var option = $(elem).find(':selected').val();
+        if (option.length > 0) {
+            location.href = "/wishlist/?list=" + option;
+        } else {
+            location.href = "/wishlist";
+        }
+    };
+
+    this.addWishListToCart = function (customer_id, list_name) {
+        if (customer_id == '0') {
+            alert('Please login first!');
+            return false;
+        }
+
+        ajaxQueueFun("clear");
+        ajaxQueueFun({
+            type: 'post',
+            data: { customer_id: customer_id, list_name: list_name, 'action': 'movetocart' },
+            context: account,
+            url: this.base + "resources/ajax/wishlist.php",
+            success: function (e) {
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-success", 'Product(s) Added to Cart.');
+                setTimeout(function () {
+                    window.location.href = "/cart";
+                }, 2000);
+            },
+            error: function (e) {
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-danger", 'There is something wrong went! Please try again.');
+                alert('error: ' + e);
+            }
+        });
+    }
+
+    this.addWishListToCartConfirm = function (customer_id, list_name, this_ele) {
+        if (customer_id == '0') {
+            alert('Please login first!');
+            return false;
+        }
+
+        $(this_ele).attr("disabled", true);
+        $.ajax({
+            type: 'post',
+            data: { customer_id: customer_id, 'action': 'getcartcount' },
+            context: account,
+            url: this.base + "resources/ajax/wishlist.php",
+            success: function (e) {
+                $(this_ele).attr("disabled", false);
+                if (parseInt(e) > 0) {
+                    $('#confirm_wishlist_move').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    }).on('click', '#overwritetocart', function (e) {
+                        $('#confirm_wishlist_move').modal('hide');
+                        e.stopImmediatePropagation();
+                        account.addWishListToCart(customer_id, list_name);
+                    });
+                } else {
+                    account.addWishListToCart(customer_id, list_name);
+                }
+            },
+            error: function (e) {
+                $(this_ele).attr("disabled", false);
+                alert('error: ' + e);
+            }
+        });
+
+
+
+    };
+
+    this.addListItemToCart = function (customer_id, product_id, qty, list_id) {
+        if (customer_id == '0') {
+            alert('Please login first!');
+            return false;
+        }
+        ajaxQueueFun("clear");
+        ajaxQueueFun({
+            type: 'post',
+            data: { customer_id: customer_id, product_id: product_id, qty: qty, list_id: list_id, 'action': 'moveitemtocart' },
+            context: account,
+            url: this.base + "resources/ajax/wishlist.php",
+            success: function (e) {
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-success", 'Product(s) Added to Cart.');
+                setTimeout(function () {
+                    window.location.href = "/cart";
+                }, 2000);
+            },
+            error: function (e) {
+                account.showMessage(account.movewishlistCartAlertTag, "alert alert-danger", 'There is something wrong went! Please try again.');
+                alert('error: ' + e);
+            }
+        });
+    };
+
+    this.addCartToWishlist = function (list_name) {
+        ajaxQueueFun("clear");
+        ajaxQueueFun({
+            type: 'post',
+            data: { list_name: list_name, 'action': 'movecarttowishlist' },
+            context: account,
+            url: this.base + "resources/ajax/wishlist.php",
+            success: function (e) {
+                account.showMessage(account.wishlistAlertTag, "alert alert-success", 'Product(s) Added to your list <a target="_blank" href="/wishlist?list=' + list_name + '"> ' + list_name + '</a>');
+                setTimeout(function () {
+                    location.href = "/wishlist/?list=" + list_name;
+                }, 2000);
+            },
+            error: function (e) {
+                var output = e.responseJSON;
+                account.showMessage(account.wishlistAlertTag, "alert alert-danger", output.message);
+            }
+        });
+    };
+}
+
+var vendoraccount = new function () {
+    this.themeUrl;
+    this.loginAlertTag;
+    this.loginURL;
+    this.facebookLoginURL;
+    this.loginSuccessMessage;
+    this.loginErrorMessage;
+    this.resetAlertTag;
+    this.resetURL;
+    this.resetSuccessMessage;
+    this.resetErrorMessage;
+    this.registerAlertTag;
+    this.registerURL;
+    this.changePassTag;
+    this.changePassURL;
+    this.isCheckout = false;
+    this.base;
+
+    this.showMessage = function ($tag, $class, $message) {
+        $($tag).fadeOut().removeClass().addClass($class).html($message).fadeIn();
+    };
+
+    this.submitForm = function (_name, _data) {
+        ajaxQueueFun({
+            type: 'post',
+            data: _data,
+            url: this.themeUrl + "submitform.php",
+            dataType: "json",
+            context: account,
+            beforeSend: function () {
+                $("form[name=contact] input[type=submit]").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    if (_name == "quote") {
+                        $('#request-quote-form')[0].reset();
+                    } else {
+                        $('form[name=contact]')[0].reset();
+                    }
+
+                    if (_name == "quote") {
+                        this.showMessage("#request-quote-alert", "alert alert-success", "Messege Sent");
+                    } else {
+                        this.showMessage("#_contact_form", "alert alert-success", "Messege Sent");
+                    }
+
+                } else {
+                    if (_name == "quote") {
+                        this.showMessage("#request-quote-alert", "alert alert-danger", "Error During Sent Messege");
+                    } else {
+                        this.showMessage("#_contact_form", "alert alert-danger", "Error During Sent Messege");
+                    }
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        }).done(function () {
+            $("form[name=contact] input[type=submit]").val("Submit").prop("disabled", false);
+        });
+    }
+
+    this.login = function (FormData) {
+
+        $(this.loginAlertTag).fadeOut();
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.loginURL,
+            context: account,
+            dataType: "json",
+            beforeSend: function () {
+                $("form#login input[type='submit']").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.loginAlertTag, "alert alert-success", this.loginSuccessMessage);
+                    if (this.isCheckout) {
+                        location.reload();
+                    } else {
+                        window.location.href = this.base + "supplier-portal/login";
+                    }
+                } else {
+                    this.showMessage(this.loginAlertTag, "alert alert-danger", this.loginErrorMessage);
+                }
+            },
+            error: function (e) {
+                alert('Error: ' + e);
+            }
+        }).done(function () {
+            $("form#login input[type='submit']").val("Login").prop("disabled", false);
+        });
+    };
+
+    this.reset = function (FormData) {
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.resetURL,
+            context: account,
+            dataType: "json",
+            beforeSend: function () {
+                $("form#reset-pass input[type='submit']").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.resetAlertTag, "alert alert-success", this.resetSuccessMessage);
+                    window.location.href = this.base + "supplier-portal/login";
+                } else {
+                    this.showMessage(this.resetAlertTag, "alert alert-danger", this.resetErrorMessage);
+                }
+            },
+            error: function (e) {
+                alert('Error: ' + e);
+            }
+        }).done(function () {
+            $("form#reset-pass input[type='submit']").val("Reset Password").prop("disabled", false);
+        });
+    }
+
+    this.register = function (FormData) {
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.registerURL,
+            context: account,
+            dataType: "json",
+            beforeSend: function () {
+                $("form#register input[type='submit']").val("Loading...").prop("disabled", true);
+            },
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.registerAlertTag, "alert alert-success", e.text);
+                    location.reload();
+                } else {
+                    this.showMessage(this.registerAlertTag, "alert alert-danger", e.text);
+                }
+            },
+            error: function (e) {
+                alert('Error: ' + e);
+            }
+        }).done(function () {
+            $("form#register input[type='submit']").val("Create account").prop("disabled", false);
+        });
+    }
+
+    this.changePassword = function (FormData) {
+
+        var pass1 = $("form#VendorNewPasswordForm input[name='newpass1']").val();
+        var pass2 = $("form#VendorNewPasswordForm input[name='newpass2']").val();
+        if (pass1.length == 0 || pass2.length == 0) {
+            this.showMessage(this.changePassTag, "alert alert-danger", "Enter Password")
+            return false;
+        } else if (pass1.length < 6 || pass2.length < 6) {
+            this.showMessage(this.changePassTag, "alert alert-danger", "Password Is Short")
+            return false;
+        } else if (pass1 != pass2) {
+            this.showMessage(this.changePassTag, "alert alert-danger", "Not Match")
+            return false;
+        }
+        ajaxQueueFun({
+            type: 'post',
+            data: FormData,
+            url: this.changePassURL,
+            context: account,
+            dataType: "json",
+            success: function (e) {
+                if (e.type == "success") {
+                    this.showMessage(this.changePassTag, "alert alert-success", "success");
+                    window.location.href = this.base + "supplier-portal/login";
+                } else {
+                    this.showMessage(this.changePassTag, "alert alert-danger", e.text);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+                alert("Error " + e);
+            }
+        });
+    }
+
+    this.purchaseOrder = function (FormData) {
+        startLoader();
+        ajaxQueueFun("clear");
+        $(this).prop('disabled', true);
+        ajaxQueueFun({
+            type: 'post',
+            url: this.updateStatusUrl,
+            data: FormData,
+            context: account,
+            success: function (e) {
+                console.log(e);
+                if (e == true) {
+                    window.location.href = this.successUrl;
+                } else {
+                    alert(e);
+                }
+            },
+            error: function () {
+                alert('Something went wrong! We were not able to process your request. ' + e);
+            }
+        });
+    }
+
+}
+
+account.base = dir;
+account.loginAlertTag = "#loginAlert";
+account.wishlistAlertTag = "#wishListAlert";
+account.wishlistCreateAlertTag = "#wishListCreateModalAlert";
+account.movewishlistCartAlertTag = "#movewishlistCartAlert";
+account.loginSuccessMessage = "Success";
+account.loginErrorMessage = "Username / Password Incorrect!";
+account.loginURL = dir + "resources/ajax/account.php?task=login";
+account.facebookLoginURL = dir + "resources/ajax/account.php?task=facebook_login";
+account.resetAlertTag = "#resetAlert";
+account.resetSuccessMessage = "A password reset link has been sent on your email.";
+account.resetErrorMessage = "Email doesn\'t exists";
+account.resetURL = dir + "resources/ajax/account.php?task=reset";
+account.registerAlertTag = "#registerAlert";
+account.registerURL = dir + "resources/ajax/account.php?task=register";
+account.changePassTag = "#reset_password_alert";
+account.changePassURL = dir + 'resources/ajax/account.php?task=changepass';
+account.updateStatusUrl = dir + 'resources/ajax/checkout.php';
+account.successUrl = dir + "success";
+vendoraccount.base = dir;
+vendoraccount.loginAlertTag = "#loginAlert";
+vendoraccount.loginSuccessMessage = "Success";
+vendoraccount.loginErrorMessage = "Username / Password Incorrect!";
+vendoraccount.loginURL = dir + "resources/ajax/supplier_account.php?task=login";
+vendoraccount.resetAlertTag = "#resetAlert";
+vendoraccount.resetSuccessMessage = "Success";
+vendoraccount.resetErrorMessage = "Email doesn\'t exists";
+vendoraccount.resetURL = dir + "resources/ajax/supplier_account.php?task=reset";
+vendoraccount.registerAlertTag = "#registerAlert";
+vendoraccount.registerURL = dir + "resources/ajax/supplier_account.php?task=register";
+vendoraccount.changePassTag = "#reset_password_alert";
+vendoraccount.changePassURL = dir + 'resources/ajax/supplier_account.php?task=changepass';
+vendoraccount.updateStatusUrl = dir + 'resources/supplier-portal/ajax/checkout.php';
+vendoraccount.successUrl = dir + "success";
+
+// Get the size of an object
+function getCartTotal() {
+    var cartObj = {};
+    size = 0;
+    if (getCookie('cart') == null)
+        size = 0;
+    else {
+        try {
+            cartObj = JSON.parse(getCookie('cart'));
+            size = Object.size(cartObj);
+            if (parseInt(size) > 0) {
+                $(".cart-button").css('color', '#e08e0b');
+            }
+            $("#cart-total").html(size);
+        }
+        catch (err) {
+            //alert(err.message);
+        }
+    }
+    $("#cart-total").html(size);
+}
+
+$(document).ready(function () {
+    $('form#login').submit(function (e) {
+        e.preventDefault();
+        account.login($(this).serialize());
+    });
+    $('form#reset-pass').submit(function (e) {
+        e.preventDefault();
+        account.reset($(this).serialize());
+    });
+    $('form#purchase-order').submit(function (e) {
+        e.preventDefault();
+        account.purchaseOrder($(this).serialize());
+    });
+    $('form#register').submit(function (e) {
+        e.preventDefault();
+        account.register($(this).serialize());
+    });
+    $('form#NewPasswordForm').submit(function (e) {
+        e.preventDefault();
+        account.changePassword($(this).serialize());
+    });
+    $('form[name=contact]').submit(function (e) {
+        e.preventDefault();
+        account.submitForm("contact", $(this).serialize())
+    });
+
+    $('form#vendorlogin').submit(function (e) {
+        e.preventDefault();
+        vendoraccount.login($(this).serialize());
+    });
+
+    $('form#vendor-reset-pass').submit(function (e) {
+        e.preventDefault();
+        vendoraccount.reset($(this).serialize());
+    });
+
+    $('form#VendorNewPasswordForm').submit(function (e) {
+        e.preventDefault();
+        vendoraccount.changePassword($(this).serialize());
+    });
+
+    $('form#wishlist').submit(function (e) {
+        e.preventDefault();
+        account.createWishlist($(this).serialize());
+    });
+
+    $('#confirm_wishlist_move').on('hidden.bs.modal', function () {
+        $("#overwritetocart").removeAttr('onclick');
+    });
+
+    getCartTotal();
+});
+
+//Main things to load
+if (!cookiesEnabled()) {
+    alert('Your Cookies are disabled. You must enable cookies through your browser for this website to function correctly.');
+}
+// Cart and Coockie Time 
+Object.size = function (obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+function resendVerificationEmail(customerId) {
+    $.ajax({
+        type: "POST",
+        url: url + 'ajax.php?service=EmailAjax&method=resendVerificationEmail',
+        data: JSON.stringify({
+            customer_id: customerId
+        }),
+        success : function(result) {
+            window.location.reload();
+        },
+        dataType : 'json'
+    });
+}
+
+function selectDependencyOption(productId, optionProductId, isRequired, index) {
+    index = parseInt(index);
+    // check product stock quantity
+    $.ajax({
+        type: 'post',
+        url: url + 'resources/ajax/checkout.php',
+        data: {
+            task: 'check_product_qty',
+            product_id: optionProductId,
+        },
+        success: function (result) {
+            var modalDependencySelectionsCookie = JSON.parse(getCookie('modalDependencySelections'));
+            var num = modalDependencySelectionsCookie.request_num;
+
+            // get current qty in cart
+            if (getCookie('cart') != null) {
+                cartObj = JSON.parse(getCookie('cart'));
+                if (cartObj[optionProductId] !== undefined && cartObj[optionProductId]['qty'] > 0) {
+                    num += parseInt(cartObj[optionProductId]['qty']);
+                }
+            }
+
+            // Out of Stock
+            if (parseInt(result) <= 0) {
+                alert('Product #' + optionProductId + ' Out of Stock!');
+                // exit modal selection if required dependency is out of stock
+                if (isRequired) {
+                    return;
+                }
+            }
+            else {
+                // Insufficient Stock
+                if (parseInt(result) < num) {
+                    // exit modal selection if required dependency has insufficient stock
+                    if (isRequired) {
+                        alert('Insufficient Stock for Product #' + optionProductId + '!');
+                        return;
+                    }
+                    // add available stock for optional dependency
+                    else {
+                        alert('You can order no more than ' + num + ' for Product #' + productId + '');
+                        num = parseInt(result);
+                    }
+                }
+
+                // add cookie entry
+                modalDependencySelectionsCookie.options[optionProductId] = {
+                    is_required: isRequired,
+                    num: num
+                };
+
+                document.cookie = 'modalDependencySelections=' + JSON.stringify(modalDependencySelectionsCookie) + '; path=/';
+
+                // display next modal
+                showNextDependencyModal(productId, index);
+            }
+        },
+        error: function (e) {
+            alert('Something went wrong while checking product stock quantity! ' + e);
+        }
+    });
+}
+
+function showNextDependencyModal(productId, index) {
+    var nextIndex = parseInt(index) + 1;
+    var nextModal = $('#product_dependencies_' + productId + '_' + nextIndex + '');
+
+    // show next modal
+    if ($(nextModal).length > 0) {
+        $(nextModal).modal();
+    }
+    // add product and dependency options to cart
+    else {
+        addProductAndDependenciesToCart();
+    }
+}
+
+function addToCart(productId, num) {
+    num = parseInt(num);
+    var requestNum = num;
+
+    if (num < 1) {
+        alert("You must order one or more!");
+        return;
+    }
+
+    $.ajax({
+        type: 'post',
+        url: url + 'resources/ajax/checkout.php',
+        data: {
+            task: 'check_product_qty',
+            product_id: productId
+        },
+        success: function (result) {
+            // get current qty in cart
+            if (getCookie('cart') != null) {
+                cartObj = JSON.parse(getCookie('cart'));
+
+                if (cartObj[productId] !== undefined && cartObj[productId]['qty'] > 0) {
+                    num += parseInt(cartObj[productId]['qty']);
+                }
+            }
+
+            // Out of Stock
+            if (parseInt(result) <= 0) {
+                alert('Product #' + productId + ' Out of Stock!');
+            }
+            else {
+                // add available qty if less than requested qty
+                if (parseInt(result) < num) {
+                    alert('You can order no more than ' + num + ' for Product #' + productId + '');
+                    num = parseInt(result);
+                }
+
+                $.ajax({
+                    type: 'post',
+                    url: url + 'resources/ajax/ajax.php',
+                    data: {
+                        task: 'get_product_dependencies',
+                        product_id: productId
+                    },
+                    success: function (result) {
+                        var dependencies = JSON.parse(result);
+
+                        // if product has no dependencies, add to cart
+                        if (dependencies.length === 0) {
+                            addProductToCart(productId, num);
+                            return;
+                        }
+
+                        // check if modal exists
+                        var modal = $('#product_dependencies_' + productId + '_0');
+
+                        if ($(modal).length > 0) {
+                            if (cookiesEnabled()) {
+                                // create dependency cookies and display modal
+                                var modalDependencySelectionsCookie = {
+                                    product_id: parseInt(productId),
+                                    num: parseInt(num),
+                                    request_num: requestNum,
+                                    options: {}
+                                }
+
+                                document.cookie = 'modalDependencySelections=' + JSON.stringify(modalDependencySelectionsCookie) + '; path=/';
+
+                                $(modal).modal();
+                            }
+                            else {
+                                alert('Please enable cookies to use this feature');
+                            }
+                        }
+                        else {
+                            addProductToCart(productId, num);
+                        }
+                    },
+                    error: function (e) {
+                        if (e.status == 404) {
+                            addProductToCart(productId, num);
+                        }
+                        else {
+                            alert('Something went wrong while adding product to your cart! ' + e);
+                        }
+                    }
+                });
+            }
+        },
+        error: function (e) {
+            alert('Something went wrong while checking stock for Product #' + productId + '!' + e);
+        }
+    });
+}
+
+function addProductToCart(productId, num) {
+    var cartObj = {};
+    cartObj[productId] = {};
+
+    if (cookiesEnabled()) {
+        //Create cookie
+        if (getCookie('cart') == null) {
+            cartObj[productId]['qty'] = num;
+        }
+        // update cookie
+        else {
+            cartObj = JSON.parse(getCookie('cart'));
+            cartObj[productId] = {};
+            cartObj[productId]['qty'] = num;
+        }
+
+        document.cookie = 'cart=' + JSON.stringify(cartObj) + ' ; path=/';
+
+        var size = Object.size(cartObj);
+
+        $("#cart-total").html(size);
+        $(".cart-button").css('color', '#e08e0b');
+
+        window.location = '/cart';
+    }
+    else {
+        alert('Please enable cookies to use this feature');
+    }
+}
+
+function addProductAndDependenciesToCart() {
+    var modalDependencySelectionsCookie = JSON.parse(getCookie('modalDependencySelections'));
+    var depdencyIds = Object.keys(modalDependencySelectionsCookie.options);
+
+    var stockData = {};
+    stockData[modalDependencySelectionsCookie.product_id] = modalDependencySelectionsCookie.num;
+
+    $.each(modalDependencySelectionsCookie.options, function (index, value) {
+        stockData[index] = value.num;
+    });
+
+    $.each(stockData, function (productId, qty) {
+        var cartObj = {};
+        cartObj[productId] = {};
+
+        // create cookie
+        if (getCookie('cart') == null) {
+            cartObj[productId]['qty'] = qty;
+        }
+        // update cookie
+        else {
+            cartObj = JSON.parse(getCookie('cart'));
+            cartObj[productId] = {};
+            cartObj[productId]['qty'] = qty;
+        }
+
+        // add dependency data
+        if (depdencyIds.includes(productId)) {
+            cartObj[productId]['dependent_of'] = modalDependencySelectionsCookie.product_id;
+            cartObj[productId]['is_required'] = modalDependencySelectionsCookie.options[productId].is_required;
+        }
+
+        document.cookie = 'cart=' + JSON.stringify(cartObj) + '; path=/';
+    });
+
+    // update cookies and go to cart
+    document.cookie = 'modalDependencySelections=' + JSON.stringify({}) + '; path=/';
+
+    var cartObj = JSON.parse(getCookie('cart'));
+    var size = Object.size(cartObj);
+
+    $("#cart-total").html(size);
+    $(".cart-button").css('color', '#e08e0b');
+
+    window.location = '/cart';
+}
+
+function removeFromCart(productId) {
+    cartObj = JSON.parse(getCookie('cart'));
+
+    if (cartObj[productId] === undefined) {
+        return false; // Error, this should not happen
+    }
+    else {
+        // remove product cookie
+        delete cartObj[productId];
+
+        // remove dependent product cookies
+        $.each(cartObj, function (key, value) {
+            if (value['dependent_of'] == productId) {
+                delete cartObj[key];
+            }
+        });
+
+        document.cookie = 'cart=' + JSON.stringify(cartObj) + '; path=/';
+
+        alert('Product(s) removed from cart ...');
+
+        location.reload()
+    }
+}
+
+function updateCart(productId) {
+    var qty = $('#qty-' + productId).val();
+
+    $.ajax({
+        type: 'post',
+        url: ajax_url + 'resources/ajax/checkout.php',
+        data: {
+            task: 'check_product_qty',
+            product_id: productId
+        },
+        success: function (result) {
+            if (result == '0' || parseInt(result) < parseInt(qty)) {
+                alert('Product Out of Stock');
+                location.reload();
+            }
+            else {
+                var cartObj = JSON.parse(getCookie('cart'));
+
+                if (cartObj[productId] === undefined) {
+                    return false; // Error, this should not happen
+                }
+                else {
+                    if ($('#qty-' + productId).val() > 0) {
+                        // update product quantity
+                        cartObj[productId]['qty'] = $('#qty-' + productId).val();
+                        cartObj[productId]['apo'] = cartObj[productId]['apo'];
+
+                        // update required dependency quantity
+                        $.each(cartObj, function (index, value) {
+                            if (cartObj[index]['dependent_of'] == productId && cartObj[index]['is_required'] == '1') {
+                                cartObj[index]['qty'] = $('#qty-' + productId).val();
+                            }
+                        });
+
+                        document.cookie = 'cart=' + JSON.stringify(cartObj) + '; path=/';
+
+                        location.reload()
+                    }
+                    else {
+                        removeFromCart(productId);
+                    }
+                }
+            }
+        }
+    });
+}
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return unescape(c.substring(name.length, c.length));
+        }
+    }
+
+    return null;
+}
+
+function cookiesEnabled() { // This would warn the users if their cookies are disables
+    var cookieEnabled = (navigator.cookieEnabled) ? true : false;
+    if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled) {
+        document.cookie = "testcookie";
+        cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+        document.cookie = "testcookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    return (cookieEnabled);
+}
+/* Checkout */
+
+/* Payment Processing */
+function paypalPayflowPro(order_id) {
+    ajaxQueueFun({
+        type: 'post',
+        url: url + 'resources/payment_modules/paypal-payflow-pro/process.php',
+        data: $('form#paypal-payflow-pro[data-order-id="' + order_id + '"]').serialize(),
+        success: function (e) {
+            $('#cc-processing').remove();
+            if (e == 1 || e == '1' || e == true || e == 11) {
+                window.location.reload();
+            } else {
+                alert(e);
+            }
+            endLoader();
+        },
+        error: function () {
+            $('#cc-processing').remove();
+            alert('Something went wrong! We were not able to process your request. ' + e);
+            endLoader();
+        }
+    });
+    return false;
+}
+
+function purchaseOrder(order_id) {
+    startLoader();
+    ajaxQueueFun({
+        type: 'post',
+        url: url + 'resources/ajax/checkout.php',
+        data: $('form#purchase-order[data-order-id="' + order_id + '"]').serialize(),
+        success: function (e) {
+            console.log(e);
+            if (e == true) {
+                window.location.reload();
+            } else {
+                alert(e);
+            }
+        },
+        error: function () {
+            alert('Something went wrong! We were not able to process your request. ' + e);
+        }
+    });
+}
+
+function setVideoHeight(css_path) {
+    $(css_path).height($(css_path).width() * (360 / 640));
+}
+
+$(document).ready(function () {
+    setSearchContainerLeftPos();
+    account.themeUrl = ThemeURL;
+});
+
+$(window).resize(function () {
+    setSearchContainerLeftPos();
+});
+
+function setSearchContainerLeftPos() {
+    var searchPos = ($(window).width() / 2) - ($(".search-container").width() / 2);
+    $(".search-container").css({ "left": searchPos + "px" });
+}
+
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function startLoader() {
+    $(".overlay").fadeIn();
+    $(".loading-img").fadeIn();
+}
+
+function endLoader() {
+    $(".overlay").fadeOut();
+    $(".loading-img").fadeOut();
+}
+
+function POAction(action, po_id) {
+    $.ajax({
+        type: 'post',
+        url: url + 'resources/ajax/supplier_account.php',
+        data: { task: action, po_id: po_id },
+        success: function (e) {
+            console.log(e);
+        }, error: function (e) {
+            alert('Error! ' + e);
+        }
+    });
+}
+
+function SubmitActionTrackingNum(tracking_num, po_id) {
+    $.ajax({
+        type: 'post',
+        url: url + 'resources/ajax/supplier_account.php',
+        data: { task: 'tracking_num', po_id: po_id, tracking_num: tracking_num },
+        success: function (e) {
+            console.log(e);
+        }, error: function (e) {
+            console.log('Error! ' + e.description);
+        }
+    });
+}
+
+var bulkError = false;
+function bulkAtddToCart(product_element_selector) {
+    bulkError = false;
+    counterProductInBulk = 0;
+    products = $(product_element_selector);
+    $.each($(products), function (index, productBox) {
+        product_id = $(productBox).data("pid");
+        qty = $(productBox).find("input[name=qty]").val();
+        product_name = $(productBox).find("input[name=product_name]").val();
+        if (qty > 0) {
+            BulkAddToCart(product_id, qty, product_name);
+            counterProductInBulk++;
+        }
+    }).promise().done(function () {
+        if (!counterProductInBulk) {
+            alert("Products not available for cart.");
+        } else if (!bulkError) {
+            setTimeout(function () {
+                window.location = '/cart';
+            }, 1000);
+        }
+    });
+}
+
+function BulkAddToCart(productId, num, product_name) {
+    if (num < 1) {
+        alert("You must order one or more!");
+        return;
+    }
+    ajaxQueueFun({
+        type: 'post',
+        url: url + 'resources/ajax/checkout.php',
+        data: { task: 'check_product_qty', product_id: productId },
+        success: function (result) {
+            if (parseInt(result) <= 0) {
+                alert('Product (' + product_name + ') Out of Stock!');
+                bulkError = true;
+            } else if (parseInt(result) < num) {
+                alert('You can order no more than ' + result + ' (' + product_name + ')');
+                bulkError = true;
+                var cartObj = {};
+                cartObj[productId] = {};
+                if (cookiesEnabled()) {
+                    if (getCookie('cart') == null) { //Create cookie
+                        cartObj[productId]['qty'] = result;
+                        document.cookie = 'cart=' + JSON.stringify(cartObj) + ' ; path=/';
+                    } else { // update cookie
+                        cartObj = JSON.parse(getCookie('cart'));
+                        if (cartObj[productId] !== undefined && cartObj[productId]['qty'] > 0) {
+                            cartObj[productId]['qty'] = parseInt(cartObj[productId]['qty']) + parseInt(result);
+                            if (cartObj[productId]['qty'] > parseInt(result)) {
+                                cartObj[productId]['qty'] = parseInt(result);
+                                alert('Insufficient Stock Level! (' + product_name + ')');
+                                bulkError = true;
+                            }
+                        } else {
+                            cartObj[productId] = {};
+                            cartObj[productId]['qty'] = result;
+                        }
+                        document.cookie = 'cart=' + JSON.stringify(cartObj) + '; path=/';
+                    }
+                    var size = Object.size(cartObj);
+                    $("#cart-total").html(size);
+                    $(".cart-button").css('color', '#e08e0b');
+                } else {
+                    alert('Please enable cookies to use this feature');
+                    bulkError = true;
+                }
+            } else {
+                var cartObj = {};
+                cartObj[productId] = {};
+                if (cookiesEnabled()) {
+                    if (getCookie('cart') == null) { //Create cookie
+                        cartObj[productId]['qty'] = num;
+                        document.cookie = 'cart=' + JSON.stringify(cartObj) + ' ; path=/';
+                    } else { // update cookie
+                        cartObj = JSON.parse(getCookie('cart'));
+                        if (cartObj[productId] !== undefined && cartObj[productId]['qty'] > 0) {
+                            cartObj[productId]['qty'] = parseInt(cartObj[productId]['qty']) + parseInt(num);
+                            if (cartObj[productId]['qty'] > parseInt(result)) {
+                                cartObj[productId]['qty'] = parseInt(result);
+                                alert('Insufficient Stock Level!' + '(' + product_name + ')');
+                                bulkError = true;
+                            }
+                        } else {
+                            cartObj[productId] = {};
+                            cartObj[productId]['qty'] = num;
+                        }
+                        document.cookie = 'cart=' + JSON.stringify(cartObj) + '; path=/';
+                    }
+                    var size = Object.size(cartObj);
+                    $("#cart-total").html(size);
+                    $(".cart-button").css('color', '#e08e0b');
+                } else {
+                    alert('Please enable cookies to use this feature');
+                    bulkError = true;
+                }
+            }
+        }, error: function (e) {
+            bulkError = true;
+            alert('Something went wrong while adding product to your cart! ' + e);
+        }
+    });
+}

@@ -1,0 +1,625 @@
+html {
+background: #111;
+}
+
+.highlight-text{
+background-color: rgba(255, 255, 255, 0.5);
+margin: 1em auto;
+padding: 1em;
+}
+.color-black{
+color: #000;
+}
+.color-white{
+color: #fff;
+}
+.bgcolor-pink{
+background-color: #AF1B5A;
+}
+.Text-Center{
+text-align:center;
+}
+.shape_circle{
+border-radius: 50%;
+overflow: hidden;
+}
+.bottomText{
+position: absolute;
+bottom: 0px;
+width: 100%;
+text-align: center;
+background-color: rgba(0, 0, 0, 0.5);
+height: 66px;
+padding-top: 15px;
+}
+.align_center{
+text-align: center;
+}
+
+.thumb-mask{
+background-color: rgba(1, 1, 1, 0.5);
+width: 100px;
+height: 100px;
+position: absolute;
+display: inline;
+opacity: 0;
+transition: opacity 500ms;
+z-index: 2;
+left: 0;
+vertical-align: middle;
+}
+.thumb-mask:hover{
+opacity: 1;
+}
+
+
+input[type="submit"] {
+    background-color: #009994;
+    color: #FFF;
+    border: medium none;
+    font-size: 15px;
+    width: 100%;
+}
+
+.TimePickerTxt{
+	background: none;
+	border: none;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	width: auto;
+	padding: 5px 0px;
+	outline: none;
+	height: 1.5em;
+}
+input[type="text"]{}
+
+.loadingDiv{
+position: fixed;
+left: -1%;
+top: -10%;
+z-index: -10;
+background-color: #EEE;
+opacity: 0;
+width: 102% !important;
+height: 120%;
+text-align: center;
+}
+.loadingDiv img{
+position: absolute;
+top: 50%;
+}
+.ajaxMsg{
+text-align: center;
+transition: opacity 1s;
+}
+.successMsg{
+color:green;
+opacity: 0;
+transition: opacity 1s;
+}
+.failMsg{
+color:red;
+opacity: 0;
+transition: opacity 1s;
+}
+
+.contactPage-bg{
+background-image: url('../images/PNG/22.png');
+background-attachment: fixed;
+}
+.scrolled{
+position:fixed;
+z-index:100000;
+margin-top: 42px;
+}
+.siteLogo{
+position: relative;
+background-color: rgba(0, 0, 0, 0.45);
+text-align: center;
+}
+.scrolled_logo{
+
+}
+
+/*
+
+.scrolled_logo img{
+width:380px;
+height:0px;
+}
+*/
+.siteLogo img{
+height:70px;
+margin-top: .5em;
+}
+header:hover{
+background-color: #000;
+}
+.header{
+color: #fff;
+text-transform:uppercase;
+}
+footer{
+clear: both;
+}
+.undefined_sb header{
+position: relative;
+z-index: 11000;
+width: 100%;
+}
+
+/*body.blog.undefined_sb header,
+body.posts.undefined_sb header,
+body.404.undefined_sb header{
+position: relative;
+}*/
+.Circle404 a{
+color: white;
+}
+.our-stylists_sb{
+background-image: url("../images/PNG/21.png");
+background-attachment: fixed;
+}
+
+
+/*---pricing-table---*/
+
+.pricing-table_sb{
+background-image: url("../images/PNG/2.png");
+background-attachment: fixed;
+}
+ a{
+color: #0E76BC;
+}
+/*---our stylists---*/
+.Person-Desc{
+line-height: 1.8em;
+margin: 2em 1em 1em;
+text-align: justify;
+font-size: 14px;
+}
+.Team-Person  li{
+
+}
+.Person-Info{
+margin: 0px 2em;
+padding: 1em;
+background-color: rgba(255,255,255,0.45);
+color: #000;
+}
+
+.Person-Pic{
+max-width:200px;
+width:80%;
+overflow:hidden;
+border-radius:200px;
+margin: auto;
+border:2px solid #00bbcc;
+}
+.Person-Job{
+font-size: small;
+}
+.Person-Skills , .Skills-Bar{
+display: none ;
+}
+[data-title="our-stylists"]{
+padding-bottom: 1em;
+}
+
+/*---contact--*/
+.contact_sb{
+background-image: url("../images/PNG/22.png");
+background-attachment: fixed;
+color: #fff;
+}
+.contactPage .right-side{
+width: 90%;
+margin: auto;
+}
+.contactPage{
+padding: 4em 0em;
+}
+div[data-title="contact"]{
+padding-top:2em;
+}
+/*---blog---*/
+body[class="track-"], body.blog{
+background-image: url("../images/PNG/22.png");
+background-attachment: fixed;
+background-blend-mode: difference;
+}
+
+
+
+/*--- our services--*/
+.ourservices_sb{
+/*background-image: url("../../../../services.jpg");*/
+background-image: url("../images/PNG/21.png");
+background-attachment: fixed;
+color: #fff;
+}
+.ourServices{
+width: 200px;
+height: 200px;
+overflow: hidden;
+position: relative;
+margin: 1em auto;
+cursor: pointer;
+}
+
+
+
+#FACIAL_THREADING_bg .shape_circle{
+	background-image: url("../../../../uploads/images/ourservices/Facial-Threading.jpg");
+	background-size: 100%;
+}
+#HAIR_DESIGN_bg .shape_circle{
+	background-image: url("../../../../uploads/images/ourservices/hair-design.jpg");
+	background-size: 100%;
+}
+#FACIAL_VAXING_bg .shape_circle{
+	background-image: url("../../../../uploads/images/ourservices/Facial-Vaxing.jpg");
+	background-size: 100%;
+}
+#LASH_APPLICATION_bg .shape_circle{
+	background-image: url("../../../../uploads/images/ourservices/lashapplication.jpg");
+	background-size: 100%;
+}
+#MAKE_UP_bg .shape_circle{
+	background-image: url("../../../../uploads/images/ourservices/Make-up.jpg");
+	background-size: 100%;
+}
+#TINTING_bg .shape_circle{
+	background-image: url("../../../../uploads/images/ourservices/tinting.jpg");
+	background-size: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-- gallery--*/
+.gallery_sb header{
+position: absolute;
+z-index: 11000;
+width: 100%;
+}
+.gallery_sb {
+background-color: #222;
+}
+.gallery-item{
+border: 0px solid #fff;
+}
+.gallery-item img{
+
+}
+
+.gallery_sb_sb .preload{
+display: none;
+}
+.gallery-images{
+background-color: #222;
+}
+.gallery-header img{
+
+}
+.gallery-menu{
+background-color: #222;
+}
+.gallery-menu a{
+color: #fff;
+text-decoration: none;
+}
+
+.gallery-menu div{
+	height: 2em;
+	padding-top: 0.3em;
+	font-size: small;
+}
+.gallery-menu div:hover{
+	background-color: #AF1B5A;
+}
+
+
+
+
+/* Styles for dialog window */
+.services-popup-dialog {
+	background: white;
+	padding: 20px 30px;
+	text-align: left;
+	max-width: 400px;
+	margin: 40px auto;
+	position: relative;
+	color: #000;
+}
+
+
+
+
+
+
+
+/**
+ * Fade-zoom animation for first dialog
+ */
+
+/* start state */
+.my-mfp-zoom-in .zoom-anim-dialog {
+	opacity: 0;
+
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+
+
+
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	-o-transform: scale(0.8);
+	transform: scale(0.8);
+}
+
+/* animate in */
+.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
+	opacity: 1;
+
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+}
+
+/* animate out */
+.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	-o-transform: scale(0.8);
+	transform: scale(0.8);
+
+	opacity: 0;
+}
+
+/* Dark overlay, start state */
+.my-mfp-zoom-in.mfp-bg {
+	opacity: 0;
+	-webkit-transition: opacity 0.3s ease-out;
+	-moz-transition: opacity 0.3s ease-out;
+	-o-transition: opacity 0.3s ease-out;
+	transition: opacity 0.3s ease-out;
+}
+/* animate in */
+.my-mfp-zoom-in.mfp-ready.mfp-bg {
+	opacity: 0.8;
+}
+/* animate out */
+.my-mfp-zoom-in.mfp-removing.mfp-bg {
+	opacity: 0;
+}
+
+
+
+/**
+ * Fade-move animation for second dialog
+ */
+
+/* at start */
+.my-mfp-slide-bottom .zoom-anim-dialog {
+	opacity: 0;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
+
+	-webkit-transform: translateY(-20px) perspective( 600px ) rotateX( 10deg );
+	-moz-transform: translateY(-20px) perspective( 600px ) rotateX( 10deg );
+	-ms-transform: translateY(-20px) perspective( 600px ) rotateX( 10deg );
+	-o-transform: translateY(-20px) perspective( 600px ) rotateX( 10deg );
+	transform: translateY(-20px) perspective( 600px ) rotateX( 10deg );
+
+}
+
+/* animate in */
+.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
+	opacity: 1;
+	-webkit-transform: translateY(0) perspective( 600px ) rotateX( 0 );
+	-moz-transform: translateY(0) perspective( 600px ) rotateX( 0 );
+	-ms-transform: translateY(0) perspective( 600px ) rotateX( 0 );
+	-o-transform: translateY(0) perspective( 600px ) rotateX( 0 );
+	transform: translateY(0) perspective( 600px ) rotateX( 0 );
+}
+
+/* animate out */
+.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
+	opacity: 0;
+
+	-webkit-transform: translateY(-10px) perspective( 600px ) rotateX( 10deg );
+	-moz-transform: translateY(-10px) perspective( 600px ) rotateX( 10deg );
+	-ms-transform: translateY(-10px) perspective( 600px ) rotateX( 10deg );
+	-o-transform: translateY(-10px) perspective( 600px ) rotateX( 10deg );
+	transform: translateY(-10px) perspective( 600px ) rotateX( 10deg );
+}
+
+/* Dark overlay, start state */
+.my-mfp-slide-bottom.mfp-bg {
+	opacity: 0;
+
+	-webkit-transition: opacity 0.3s ease-out;
+	-moz-transition: opacity 0.3s ease-out;
+	-o-transition: opacity 0.3s ease-out;
+	transition: opacity 0.3s ease-out;
+}
+/* animate in */
+.my-mfp-slide-bottom.mfp-ready.mfp-bg {
+	opacity: 0.8;
+}
+/* animate out */
+.my-mfp-slide-bottom.mfp-removing.mfp-bg {
+	opacity: 0;
+}
+
+.Gallery .nbs-flexisel-nav-left, .Gallery .nbs-flexisel-nav-right{
+	display: none;
+}
+#home-intro{
+	line-height: 1.8em;
+}
+
+span.bolden {
+font-weight: 700;
+background: #09C7C1;
+padding: 0 4px;
+border-radius: 6px;
+}
+[class^="banner"] {
+/*min-height: 955px;*/
+background-position: center;
+}
+.callbacks_nav.next, .callbacks_nav.prev{
+	bottom: 2em;
+}
+.callbacks_nav.next {
+right: 2em;
+}
+.callbacks_nav.prev {
+right: 7em;
+}
+p.general-text {
+text-align: justify;
+padding: 1em;
+line-height: 28px;
+}
+#page-20 .shape_circle {
+-webkit-transition: 1s ease-in;
+-moz-transition: 1s ease-in;
+-ms-transition: 1s ease-in;
+transition: 1s ease-in;
+}
+#page-20 .shape_circle:hover {
+opacity: 1;
+}
+#page-20 .row-fluid > .span12 > .row-fluid > .span4:hover > .shape_circle{
+	opacity: 0.7; border: 2px solid;
+}
+tr:hover {
+background: #9F3849;
+}
+h4.Person-Name {
+margin-top: 1em;
+}
+.span10.offset1.PriTbl-Title {
+background: rgba(27, 27, 27, 0.45);
+color: #FFF;
+padding: 1em 1em 2em;
+line-height: 2em;
+}
+.content-container a {
+text-decoration: underline;
+}
+div#blog, .post-container {
+max-width: 1170px;
+margin: 0 auto;
+}
+section.grid-item {
+background: rgba(255, 255, 255, 0.5);
+border-radius: 1em;
+padding: 1em;
+margin: 2em 0;
+}
+a.read-more {
+float: right;
+line-height: 2em;
+height: 2em;
+margin-top: 1em;
+background: rgba(255, 255, 255, 0.27);
+width: 100%;
+text-align: center;
+}
+div.post-container {
+margin-bottom: 2em;
+background: #F0F0F0;
+padding: 2em 1em 0;
+}
+
+
+
+/* -- @media -- */
+@media screen and (min-width: 850px) {
+body{
+background-size:100% auto;
+}
+}
+
+@media (max-width: 770px){
+.gallery_sb header,.undefined_sb header,.scrolled{
+position: relative;
+background-color: #000;
+}
+
+}
+.top-banner  img { width: 100%; height: auto;}
+.space-01 { padding: 55px 0px; }
+.space-02 { padding: 55px 15px; }
+.page-box h2 { font-weight: 700; color: #5f5f5f; font-size: 72px; }
+.page-box h2 span { font-weight: 100; color: #000; }
+.page-box p { font-size: 18px; line-height: 28px; color: #5f5f5f; }
+.page-box .bottomText { color: #FFF !important; line-height: 14px; }
+
+
+.lp-bg1 {
+	 background: url(../../../../uploads/blow-dry.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	 padding: 55px 0;
+}
+
+.lp-btn { -webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px; border: 1px solid #000000;   display: inline-block; margin-top: 10px; padding: 15px 25px; font-size: 18px; color: #000; text-transform: uppercase; text-decoration: none !important;  font-weight: 700;  }
+.lp-btn:hover {background-color: #000; color: #FFF; }
+
+.lp-list { padding: 15px 0px; margin: 0px; }
+.lp-list li { list-style: none; font-weight: 700; font-size: 18px; margin-bottom: 10px; padding-left: 35px;  background: url(../../../../uploads/lp-icon.png) no-repeat left center;   }
+
+.page-box img { width: 100%; height: auto; }
+.pb-1 { padding-bottom: 0px;  }
+.form-box h2 { font-weight: 700; color: #5f5f5f; font-size: 48px; text-align: center; padding-bottom: 20px;}
+
+
+.form-box input.form-control { box-shadow: 0px; height: 45px;  -webkit-border-radius: 50px;
+-moz-border-radius: 50px; font-size: 18px; padding-left: 20px; padding-right: 20px;
+border-radius: 50px; border: 1px solid #000000;  }
+.form-box textarea.form-control { -webkit-border-radius: 50px;
+-moz-border-radius: 50px; font-size: 18px;  padding-left: 20px; padding-right: 20px;
+border-radius: 50px; border: 1px solid #000000; resize: none; padding-top: 15px; padding-bottom: 15px; }
+.form-box input[type=submit] {-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px; background: #5f5f5f;  display: inline-block; margin-top: 10px; padding: 15px 25px; font-size: 18px; color: #FFF; text-transform: uppercase; text-decoration: none !important;  font-weight: 700; width: auto; }
+.form-box input[type=submit]:hover {background-color: #000; color: #FFF; }
+.message  {position: relative; }
+.message .alert {position:absolute; top: 10px; font-size: 12px; }
+
+.lp-call { font-size: 48px; font-weight: 600; text-align: center; padding: 20px; color: #FFF; background: #111;}
+
+@media (max-width:767px) { .m-space { padding-top: 110px; }
+
+	.space-02 {padding: 0px 15px 55px;}
+.lp-call { font-size: 36px; }
+.pl-2 { padding-left: 50px; }
+}
